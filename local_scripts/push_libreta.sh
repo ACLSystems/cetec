@@ -1,9 +1,9 @@
 #/bin/bash
 
 export COMPANY="aclsystems"
-export APP="libreta"
+export APP="cetec"
 export TRAIL=""
-export WKDIR=/Users/Arturo/aclprojects/libreta
+export WKDIR=/Users/Arturo/aclprojects/cetec
 export VERSION=$(node $WKDIR/misc/getVersion.js)
 export LATEST=$COMPANY/$APP$TRAIL:latest
 export CURRENT_IMAGE=$COMPANY/$APP$TRAIL:$VERSION

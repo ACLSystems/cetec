@@ -13,6 +13,7 @@
 # dependencies
 /node_modules
 /bower_components
+/local_scripts
 
 # IDEs and editors
 /.idea
