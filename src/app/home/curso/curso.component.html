@@ -20,7 +20,7 @@
     <hr>
     <ngb-tabset>
       <ngb-tab>
-        <ng-template ngbTabTitle><h6 class="text-success"><i class="fas fa-book-reader"></i> Descripción del curso</h6></ng-template>
+        <ng-template ngbTabTitle><h6 class="text-info"><i class="fas fa-book-reader"></i> Descripción del curso</h6></ng-template>
         <ng-template ngbTabContent>
           <br>
           <div class="row">
@@ -52,7 +52,7 @@
         </ng-template>
       </ngb-tab>
       <ngb-tab>
-        <ng-template ngbTabTitle><h6 class="text-success"><i class="fas fa-list"></i> Temario</h6></ng-template>
+        <ng-template ngbTabTitle><h6 class="text-info"><i class="fas fa-list"></i> Temario</h6></ng-template>
           <ng-template ngbTabContent>
             <div *ngFor="let item of block" class="card">
               <div *ngIf="item.number==0" class="card-header">
@@ -94,13 +94,13 @@
       <div class="row">
         <div class="col text-center">
           <h6>Ya tengo una cuenta</h6>
-          <button type="button" class="btn btn-success blockquote float-none" [routerLink]="['/login']" (click)="closeModal()">
+          <button type="button" class="btn btn-info blockquote float-none" [routerLink]="['/login']" (click)="closeModal()">
             <i class="fas fa-user"></i> Iniciar sesión
           </button>
         </div>
         <div class="col text-center">
           <h6>Soy un participante nuevo</h6>
-          <button type="button" class="btn btn-success blockquote" [routerLink]="['/signin']" (click)="closeModal()">
+          <button type="button" class="btn btn-info blockquote" [routerLink]="['/signin']" (click)="closeModal()">
             <i class="fas fa-user-plus"></i> Registrarme
           </button>
         </div>

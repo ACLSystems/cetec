@@ -37,11 +37,11 @@
     </div>
   </div>
   <hr>
-  <div *ngIf="messageSuccessConst != ''" class="alert alert-success" role="alert">
+  <div *ngIf="messagesuccessConst != ''" class="alert alert-success" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <i class="fas fa-info-circle"></i> {{messageSuccessConst}}
+      <i class="fas fa-success-circle"></i> {{messagesuccessConst}}
   </div>
   <ngb-tabset>
     <ngb-tab>
@@ -281,8 +281,8 @@
   </div>
   <div class="modal-body">
     <div class="container-fluid">
-      <div *ngIf="messageSuccess" class="alert alert-success" role="alert">
-        {{messageSuccess}}
+      <div *ngIf="messagesuccess" class="alert alert-success" role="alert">
+        {{messagesuccess}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,14 +361,14 @@
 
 <ng-template #confirmconst let-c="close" let-d="dismiss" class="animated fast fadeIn modal-side modal-">
   <div class="modal-header">
-    <h4 class="modal-title"><i class="fas fa-info-circle"></i> Atención</h4>
+    <h4 class="modal-title"><i class="fas fa-success-circle"></i> Atención</h4>
     <button type="button" class="close" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <i class="fas fa-info-circle"></i> {{messagecertificate}}
+      <i class="fas fa-success-circle"></i> {{messagecertificate}}
     </div>
     <hr>
     <div class="row">

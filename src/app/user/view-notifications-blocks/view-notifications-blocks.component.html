@@ -1,21 +1,21 @@
 <div class="container">
-  <button type="button" class="btn btn-success blockquote" [routerLink]="['/userprofile']">
+  <button type="button" class="btn btn-info blockquote" [routerLink]="['/userprofile']">
     <i class="fas fa-exchange-alt"></i> Regresar
   </button>
   <div *ngIf="type == 'root'">
     <div *ngFor="let itemDiscussion of discussions; let idDC = index">
       <div *ngIf="itemDiscussion.discussionId == itemid">
-        <span class="text-success">
+        <span class="text-info">
           <h2><i class="fas fa-quote-left"></i> {{itemDiscussion.title}}</h2>
         </span>
         <small><i class="fas fa-user-circle"></i> {{itemDiscussion.user}}  <i class="far fa-clock"></i> {{itemDiscussion.when}}</small>
         <span class="text-muted">
           <h3>{{itemDiscussion.text}}</h3>
         </span>
-        <div *ngFor="let itemComment of comments" class="text-success font-italic">
+        <div *ngFor="let itemComment of comments" class="text-info font-italic">
           <div *ngIf="itemDiscussion.discussionId == itemComment.root" class="text-left col-10">
             <hr>
-            <span class="text-success">
+            <span class="text-info">
               <h4><i class="far fa-comments"></i> <small>{{itemComment.text}}</small></h4>
               <small><i class="fas fa-user-circle"></i> {{itemComment.user}}  <i class="far fa-clock"></i> {{itemComment.when}}</small>
               <br>
@@ -40,7 +40,7 @@
         <hr>
         <div class="input-group mb-3" style="margin-top:1%;">
           <div class="input-group-append">
-            <button class="btn btn-success" type="button" (click)="setComment(commentDoubt.value, itemDiscussion.course, itemDiscussion.group, itemDiscussion.discussionId, itemDiscussion.discussionId, itemDiscussion.userId, itemDiscussion.text, itemDiscussion.block)"><i class="far fa-comments"></i>  Enviar</button>
+            <button class="btn btn-info" type="button" (click)="setComment(commentDoubt.value, itemDiscussion.course, itemDiscussion.group, itemDiscussion.discussionId, itemDiscussion.discussionId, itemDiscussion.userId, itemDiscussion.text, itemDiscussion.block)"><i class="far fa-comments"></i>  Enviar</button>
           </div>
           <input type="text" placeholder="Envía tu comentario sobre esta duda" #commentDoubt class="form-control">
         </div>
@@ -48,13 +48,13 @@
     </div>
   </div>
   <div *ngIf="type == 'comment'">
-    <div *ngFor="let itemComment of comments" class="text-success font-italic">
+    <div *ngFor="let itemComment of comments" class="text-info font-italic">
       <div *ngIf="itemComment.discussionId == itemid" class="text-left">
-        <span class="text-success">
+        <span class="text-info">
           <h3><i class="fas fa-quote-left"></i><b class="font-italic"> Respuestas a tu comentario: </b></h3>
         </span>
         <hr>
-        <span class="text-success">
+        <span class="text-info">
           <h4><i class="far fa-comments"></i> <small>{{itemComment.text}}</small></h4>
           <small><i class="fas fa-user-circle"></i> {{itemComment.user}}  <i class="far fa-clock"></i> {{itemComment.when}}</small>
           <br>

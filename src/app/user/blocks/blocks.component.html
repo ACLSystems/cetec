@@ -1,7 +1,7 @@
 <div *ngIf="loading">
   <nav id="courseReading" class="navbar navbar-light bg-white fixed-top">
     <a class="navbar-brand">
-      <img src="/assets/img/superatemexico.jpg" width="100" alt="">
+      <img src="/assets/img/grupocetec.jpg" width="100" alt="">
     </a>
 
     <a class="navbar-brand"></a>
@@ -23,7 +23,7 @@
 <div  *ngIf="!loading" class="container">
   <nav id="courseReading" class="navbar navbar-light bg-white fixed-top">
     <a class="navbar-brand">
-      <img src="/assets/img/superatemexico.jpg" width="100" alt="">
+      <img src="/assets/img/grupocetec.jpg" width="100" alt="">
     </a>
 
     <a class="navbar-brand">{{block}}</a>
@@ -33,19 +33,19 @@
       <div class="btn-group  mr-2" role="group">
 
         <!--Boton para regresar a la seccion de mis cursos-->
-        <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
+        <button type="button" class="btn btn-info" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
           <i class="fas fa-reply"></i>
         </button>
         <!---->
 
         <!--Boton de temario-->
-        <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Temario" (click)="showTemary(content)">
+        <button type="button" class="btn btn-info" placement="bottom" ngbTooltip="Temario" (click)="showTemary(content)">
           <i class="fas fa-list-ol"></i>
         </button>
         <!--  -->
 
         <!--Boton de recursos-->
-        <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Material de apoyo" (click)="showResources(resources)">
+        <button type="button" class="btn btn-info" placement="bottom" ngbTooltip="Material de apoyo" (click)="showResources(resources)">
           <i class="fas fa-paperclip"></i>
         </button>
         <!--  -->
@@ -53,11 +53,11 @@
       </div>
       <!--  -->
       <!--Boton para regresar la leccion-->
-      <button class="btn btn-sm btn success" type="button" placement="bottom" ngbTooltip="Lección anterior" (click)="getBlock(newBlock.data.blockPrevId, false)" [disabled]="!blockprev"><i class="fas fa-chevron-left"></i> Anterior</button>
+      <button class="btn btn-sm btn info" type="button" placement="bottom" ngbTooltip="Lección anterior" (click)="getBlock(newBlock.data.blockPrevId, false)" [disabled]="!blockprev"><i class="fas fa-chevron-left"></i> Anterior</button>
       <!-- -->
 
       <!--Boton para la siguiente leccion-->
-      <button class="btn btn-sm btn-success" type="button" placement="bottom" ngbTooltip="Siguiente lección"  (click)="getBlock(newBlock.data.blockNextId, true)" [disabled]="!blocknext">Siguiente <i class="fas fa-chevron-right"></i></button>
+      <button class="btn btn-sm btn-info" type="button" placement="bottom" ngbTooltip="Siguiente lección"  (click)="getBlock(newBlock.data.blockNextId, true)" [disabled]="!blocknext">Siguiente <i class="fas fa-chevron-right"></i></button>
       <!-- -->
     </form>
     <!--    -->
@@ -96,18 +96,18 @@
         <div *ngIf="itemBlock.number==0">
           <ngb-panel>
             <ng-template ngbPanelTitle>
-              <span class="text-success"><b>{{itemBlock.title}}</b></span>
+              <span class="text-info"><b>{{itemBlock.title}}</b></span>
             </ng-template>
             <ng-template ngbPanelContent>
               <div *ngIf="indiceBlock==0 && !itemBlock.track" class="card-header">
-                <button type="button" class="btn btn-outline-success" (click)="getBlock(itemBlock.id, false)">
+                <button type="button" class="btn btn-outline-info" (click)="getBlock(itemBlock.id, false)">
                   <h6>
                     <i class="far fa-flag"></i> Iniciar Curso
                   </h6>
                 </button>
               </div>
               <div *ngIf="itemBlock.track" class="card-header">
-                <button type="button" class="btn btn-outline-success" (click)="getBlock(itemBlock.id, false)">
+                <button type="button" class="btn btn-outline-info" (click)="getBlock(itemBlock.id, false)">
                   <h6>
                     <i class="far fa-calendar-check"></i> {{itemBlock.section}}.{{itemBlock.title}}
                   </h6>
@@ -120,7 +120,7 @@
               </div>
               <div *ngFor="let itemBlockL of blockList">
                 <div *ngIf="itemBlockL.number !=0 && itemBlock.section == itemBlockL.section && itemBlockL.track" class="list-group-item">
-                  <button type="button" class="btn btn-outline-success" (click)="getBlock(itemBlockL.id, false)">
+                  <button type="button" class="btn btn-outline-info" (click)="getBlock(itemBlockL.id, false)">
                     <i class="far fa-calendar-check"></i> {{itemBlockL.section}}.{{itemBlockL.number}} {{itemBlockL.title | slice:0:40 }}
                   </button>
                 </div>
@@ -162,7 +162,7 @@
       <div *ngFor="let itemResources of blockResources">
         <ngb-panel>
           <ng-template ngbPanelTitle>
-            <span class="text-success"><b>{{itemResources.title}}</b></span>
+            <span class="text-info"><b>{{itemResources.title}}</b></span>
           </ng-template>
           <ng-template ngbPanelContent>
             <div [innerHTML]="itemResources.content">

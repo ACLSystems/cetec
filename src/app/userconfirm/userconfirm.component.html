@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand">
-    <img src="/assets/img/superatemexico.jpg" width="100">
+    <img src="/assets/img/grupocetec.jpg" width="100">
   </a>
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,8 +26,8 @@
     </h4>
   </div>
 
-  <div *ngIf="messageSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{messageSuccess}}</strong>
+  <div *ngIf="messageinfo" class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>{{messageinfo}}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -76,7 +76,7 @@
             <input type="password" id="txtpassc" class="form-control" #passTwo (blur)="getPassword(passOne.value, passTwo.value)" required>
 
             <span *ngIf="!isPassOk" class="text-danger">Las contraseñas no coinciden</span>
-            <span *ngIf="isPassOk" class="text-success">Las contraseñas coinciden</span>
+            <span *ngIf="isPassOk" class="text-info">Las contraseñas coinciden</span>
 
           </div>
 					<div class="alert alert-warning" role="alert">
@@ -86,8 +86,8 @@
             <h6><b>*Al enviar esta información aceptas los terminos y condiciones de uso de </b><a [routerLink]="['/avisoprivacidad']" target="_blank">superatemexico</a></h6>
           </div>
           <div class="form-group">
-            <button *ngIf="!isDataOk || !isPassOk" type="button" class="btn btn-success blockquote" disabled ><i class="fas fa-check"></i> Enviar</button>
-            <button *ngIf="isDataOk && isPassOk" type="button" class="btn btn-success blockquote" (click)="sendData()"><i class="fas fa-check"></i> Enviar</button>
+            <button *ngIf="!isDataOk || !isPassOk" type="button" class="btn btn-info blockquote" disabled ><i class="fas fa-check"></i> Enviar</button>
+            <button *ngIf="isDataOk && isPassOk" type="button" class="btn btn-info blockquote" (click)="sendData()"><i class="fas fa-check"></i> Enviar</button>
           </div>
         </form>
       </div>
