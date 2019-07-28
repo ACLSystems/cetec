@@ -32,12 +32,12 @@ export class UserconfirmComponent implements OnInit {
 
   public messageSuccess:string;
   public messageError:string;
-  public urlConalep:any
+  public urlLibreta:any
 
   public token;
 
   constructor(private user:UserService, private router:Router, private activeRouter:ActivatedRoute) {
-    this.urlConalep = environment.urlconalep;
+    this.urlLibreta = environment.urlLibreta;
     this.activeRouter.params.subscribe( params=> {
       if(params['tokentemp']!=null){
         this.token = params['tokentemp'];
@@ -102,10 +102,10 @@ export class UserconfirmComponent implements OnInit {
     this.user.userConfirm(this.confirm).subscribe(data=>{
       this.messageSuccess = "Se han guardado los datos exitosamente. Usarás tus credenciales para entrar en la siguiente pantalla."
       location.reload(true);
-      location.replace(this.urlConalep + '#/login');
+      location.replace(this.urlLibreta + '#/login');
     },error=>{
 			if(error.message === 'Token is not valid. Please verify') {
-				this.messageError = 'Los datos ya fueron validados. Favor de no utilizar esta página para volver a ingresar. Ve directamente a: ' + this.urlConalep;
+				this.messageError = 'Los datos ya fueron validados. Favor de no utilizar esta página para volver a ingresar. Ve directamente a: ' + this.urlLibreta;
 			}
       console.log(error);
       this.messageError = error;

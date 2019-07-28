@@ -3,6 +3,7 @@ import { HomeService } from '../homeservices/home.service';
 import { registerLocaleData } from '@angular/common';
 import { interval, Subscription, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { environment } from './../../../environments/environment';
 
 import localeMx from '@angular/common/locales/es-MX';
 
@@ -35,6 +36,8 @@ export class ConstanciasComponent implements OnInit {
 		certificateNumber: number
 	}
 	certificateFound: boolean;
+	instanceName: string;
+	instanceTitle: string;
 	private updateDisableSubscription: Subscription;
 
   constructor(private homeService: HomeService) { }
@@ -44,6 +47,8 @@ export class ConstanciasComponent implements OnInit {
 		this.certificateFound = false;
 		this.busqueda = false;
 		this.updateDisable = false;
+		this.instanceName = environment.instanceName;
+		this.instanceTitle = environment.instanceTitle
   }
 
 	searchCertificate(folio:number) {

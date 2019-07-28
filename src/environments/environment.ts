@@ -5,9 +5,13 @@
 export const environment = {
   production: false,
   url: 'https://apiadmin.sloppy.zone/',
-  urlconalep: 'https://conalepvirtual-test.superatemexico.com/',
+  urlLibreta: 'https://conalepvirtual-test.superatemexico.com/',
   idTutor: '5ab47313007ce400a8ef4248',
-	versionCheckURL: 'version.json'
+	versionCheckURL: 'version.json',
+	instanceName: 'cetec',
+	instanceTitle: 'CETEC',
+	siteName: 'cetec.superatemexico.com',
+	footer:'Dirección de Servicios Tecnológicos y de Capacitación Conalep'
 };
 
 /*

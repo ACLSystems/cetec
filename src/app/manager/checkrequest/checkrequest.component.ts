@@ -5,6 +5,7 @@ import { ManagerserviceService } from './../managerservice.service';
 import { UserService } from './../../shared/sharedservices/user.service';
 import { NgbModule, NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { fiscaluser, fiscalusernew, fiscaladdress, fiscalupdate, fiscaluserupdates, fiscalusercorp, fiscalusernewcorp, fiscalticketdates, fiscalticketmodel, fiscalemails, roostermodels} from './../manager.models';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-checkrequest',
@@ -58,8 +59,9 @@ export class CheckrequestComponent implements OnInit {
   orgusstate:boolean;
   orgusname:boolean;
   addmails:boolean;
-  orgName:any;
-  orgid:any;
+	orgName:string;
+  ouName:any;
+  ouid:any;
   stateBoolean:boolean;
   orgusboolean:boolean;
   orgUS:any[]=[];
@@ -78,6 +80,7 @@ export class CheckrequestComponent implements OnInit {
   }
 
   ngOnInit() {
+		this.orgName = environment.instanceName;
     this.getRequestDetails();
     this.getOU();
   }
@@ -90,14 +93,14 @@ export class CheckrequestComponent implements OnInit {
       this.parent = data.message.ou.parent;
       this.state = data.message.ou.state;
       this.longname = data.message.ou.longName;
-      if(this.parent=='conalep' && this.state=='conalep'){
+      if(this.parent==this.orgName && this.state==this.orgName){
         this.getStatesOU();
         this.orgusstate = true;
         this.orgusname = true;
-      }else if(this.parent=='conalep' && this.state!='conalep'){
+      }else if(this.parent==this.orgName && this.state!=this.orgName){
         this.getOrgUnits(this.state);
         this.orgusname = true;
-      }else if(this.parent!='conalep' && this.state==this.parent){
+      }else if(this.parent!=this.orgName && this.state==this.parent){
         this.orgusstate = false;
         this.stateBoolean = true;
         this.orgusname = true;
@@ -114,10 +117,10 @@ export class CheckrequestComponent implements OnInit {
   */
   public getStatesOU(){
     let query1={
-        type:"state",
-        parent:"conalep"
+        type:'state',
+        parent:this.orgName
       };
-    this.managerservice.getStates('conalep', query1).subscribe(data=>{
+    this.managerservice.getStates(this.orgName, query1).subscribe(data=>{
       let objr = data.message;
       this.statesOU = objr.ous;
       },error=>{
@@ -133,7 +136,7 @@ export class CheckrequestComponent implements OnInit {
       type:"campus",
       parent:this.managerservice.parserString(state)
     };
-    this.managerservice.getStates('conalep',query1).subscribe(data=>{
+    this.managerservice.getStates(this.orgName,query1).subscribe(data=>{
       this.orgUS = data.message.ous;
       this.stateBoolean = true;
     },error=>{
@@ -149,8 +152,8 @@ export class CheckrequestComponent implements OnInit {
     if(orgunit.length!=0){
       let org =  this.orgUS.find(id => id.id == orgunit)
       this.longnamecorp = org.longName
-      this.orgid = org.id
-      this.orgName = org.name;
+      this.ouid = org.id
+      this.ouName = org.name;
       this.orgusboolean = true;
     }
   }

@@ -10,9 +10,11 @@ export class HomeService {
   public identiti: any;
   public token: any;
   public roles: any;
+	public org: string;
 
   constructor(private http: HttpClient) {
     this.url = environment.url;
+		this.org = environment.instanceName;
   }
 
   /*
@@ -76,7 +78,8 @@ export class HomeService {
   Metodo para traer los cursos de la organizacion
   */
   getCoursesOrg(): Observable<any> {
-    return this.http.get(this.url+'api/course/list?org=conalep', {observe: 'response'});
+		this.org
+    return this.http.get(this.url+'api/course/list?org=' + this.org, {observe: 'response'});
   }
 
   /*

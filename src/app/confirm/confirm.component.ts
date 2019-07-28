@@ -31,12 +31,12 @@ export class ConfirmComponent implements OnInit {
 
   public messageSuccess:string;
   public messageError:string;
-  public urlConalep:any;
+  public urlLibreta:any;
 
   public token;
 
   constructor(private user:UserService, private router:Router, private activeRouter:ActivatedRoute) {
-    this.urlConalep = environment.urlconalep;
+    this.urlLibreta = environment.urlLibreta;
     this.activeRouter.params.subscribe( params=> {
       if(params['tokentemp']!=null){
         this.tokentemp = params['tokentemp'];
@@ -94,7 +94,7 @@ export class ConfirmComponent implements OnInit {
     this.user.userConfirm(this.confirm).subscribe(data=>{
       this.messageSuccess = "Se han guardado los datos exitosamente"
       location.reload(true);
-      location.replace(this.urlConalep);
+      location.replace(this.urlLibreta);
     },error=>{
       console.log(error);
       this.messageError = error;

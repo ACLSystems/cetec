@@ -92,12 +92,14 @@ export class NewgroupComponent implements OnInit{
   public parent:any;
   public state:any;
   statefinder:any;
-  public orgName:any;
+	public orgName:string;
+  public orgUnitName:any;
   public longname:any;
 
 
   constructor(private activatedroute:ActivatedRoute, private router:Router, private modalService:NgbModal, private managerServices:ManagerserviceService, private userService:UserService, private datePipe:DatePipe) {
-    this.idTutor = environment.idTutor;
+		this.orgName = environment.instanceName;
+		this.idTutor = environment.idTutor;
     this.activatedroute.params.subscribe(params=>{
       if(params['id']!=null){
         this.idrequest=params['id'];
@@ -124,10 +126,10 @@ export class NewgroupComponent implements OnInit{
   */
   public getStatesOU(){
     let query1={
-        type:"state",
-        parent:"conalep"
+        type:'state',
+        parent:this.orgName
       };
-    this.managerServices.getStates('conalep', query1).subscribe(data=>{
+    this.managerServices.getStates(this.orgName, query1).subscribe(data=>{
         let objr = data.message;
         this.statesOU = objr.ous;
       },error=>{
@@ -144,7 +146,7 @@ export class NewgroupComponent implements OnInit{
       type:"campus",
       parent:this.managerServices.parserString(state)
     };
-    this.managerServices.getStates('conalep',query1).subscribe(data=>{
+    this.managerServices.getStates(this.orgName,query1).subscribe(data=>{
       this.orgUS = data.message.ous;
       this.stateBoolean = true;
     },error=>{
@@ -172,7 +174,7 @@ export class NewgroupComponent implements OnInit{
   Metodo para obtener el listado de carreras
   */
   getCarreras(){
-    this.managerServices.getCarreras('conalep').subscribe(
+    this.managerServices.getCarreras(this.orgName).subscribe(
       data=>{
         this.carrerList = data.message.results;
       },error=>{
@@ -189,14 +191,14 @@ export class NewgroupComponent implements OnInit{
       this.parent = data.message.ou.parent;
       this.state = data.message.ou.state;
       this.longname = data.message.ou.longName;
-      if(this.parent=='conalep' && this.state=='conalep'){
+      if(this.parent==this.orgName && this.state==this.orgName){
         this.getStatesOU();
         this.orgusstate = true;
         this.orgusname = true;
-      }else if(this.parent=='conalep' && this.state!='conalep'){
+      }else if(this.parent==this.orgName && this.state!=this.orgName){
         this.getOrgUnits(this.state);
         this.orgusname = true;
-      }else if(this.parent!='conalep' && this.state==this.parent){
+      }else if(this.parent!=this.orgName && this.state==this.parent){
         this.orgusstate = false;
         this.stateBoolean = true;
         this.orgusname = true;
@@ -279,7 +281,7 @@ export class NewgroupComponent implements OnInit{
       this.orgusboolean = true;
       let org =  this.orgUS.find(id => id.id == orgunit)
       this.idorg = org.id
-      this.orgName = org.name;
+      this.orgUnitName = org.name;
     }else{
       this.orgusboolean = false;
     }
@@ -304,11 +306,11 @@ export class NewgroupComponent implements OnInit{
   Metodo para generar la clave del grupo y consultarlo en la base de datos
   */
   public generateCodeGroup(code){
-    if(code.length !== 0 && this.orgName!=null && this.numberGroup!=null){
+    if(code.length !== 0 && this.orgUnitName!=null && this.numberGroup!=null){
       this.codeCourse = code;
       this.getNameCourse(this.codeCourse);
       let consecutivo = 1
-      this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-00"+consecutivo;
+      this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-00"+consecutivo;
       this.coursegboolean = true;
     }else{
       this.coursegboolean = false;
@@ -324,7 +326,7 @@ export class NewgroupComponent implements OnInit{
       this.managerServices.getGroupsforParent(this.idCourse, this.statefinder).subscribe(
         data=>{
           if(data.groups>0){
-            let vartmp = data.message.find(id => id.ouName == this.orgName);
+            let vartmp = data.message.find(id => id.ouName == this.orgUnitName);
             console.log(vartmp);
             if(vartmp!=null){
               this.datacourse = vartmp.groups
@@ -332,11 +334,11 @@ export class NewgroupComponent implements OnInit{
                 let number = this.claveGroup.substring(this.claveGroup.length,(this.claveGroup.length-3));
                 number++
                 if(number>10){
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-0"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-0"+number;
                 }else if(number>100){
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-"+number;
                 }else{
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-00"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-00"+number;
                 }
               }
             }
@@ -352,18 +354,18 @@ export class NewgroupComponent implements OnInit{
       this.managerServices.getGroupsforParent(this.idCourse, this.identiti.orgUnit).subscribe(
         data=>{
           if(data.groups>0){
-            let groupstmp = data.message.find(id => id.ouName == this.orgName);
+            let groupstmp = data.message.find(id => id.ouName == this.orgUnitName);
             if(groupstmp!=null){
               this.datacourse = groupstmp.groups
               while(this.datacourse.find(dc => dc.code == this.claveGroup)){
                 let number = this.claveGroup.substring(this.claveGroup.length,(this.claveGroup.length-3));
                 number++
                 if(number>10){
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-0"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-0"+number;
                 }else if(number>100){
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-"+number;
                 }else{
-                  this.claveGroup = this.codeCourse+"-"+this.orgName+"-"+this.numberGroup+"-00"+number;
+                  this.claveGroup = this.codeCourse+"-"+this.orgUnitName+"-"+this.numberGroup+"-00"+number;
                 }
               }
             }
@@ -434,7 +436,7 @@ export class NewgroupComponent implements OnInit{
                 }
                 this.managerServices.updateRequestManager(requestUpdate).subscribe(
                   data=>{
-                    this.router.navigate(["/requests/addusers",this.idrequest,this.numberRequest,this.labelrequest,res.id,res.code,this.orgName]);
+                    this.router.navigate(["/requests/addusers",this.idrequest,this.numberRequest,this.labelrequest,res.id,res.code,this.orgUnitName]);
                     this.loadingprocess = false;
                   },error=>{
                     console.log(error);

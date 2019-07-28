@@ -13,6 +13,7 @@ export class CourseService {
   public token: any;
   public resultQueryCours: any[];
   public idRQ: string;
+	public org: string;
 
   youtubeUrl = 'https://www.googleapis.com/youtube/v3';
   apikey = 'AIzaSyD0yRdoVfZWhISHwYu1j758Phg6jZggvrQ';
@@ -20,6 +21,7 @@ export class CourseService {
   constructor(public http: HttpClient, private user: UserService) {
     this.url = environment.url;
     this.token = this.user.getToken();
+		this.org = environment.instanceName;
   }
 
   /*
@@ -162,7 +164,7 @@ export class CourseService {
   }
 
   getCoursesOrg():Observable<any>{
-    return this.http.get(this.url+'api/course/list?org=conalep');
+    return this.http.get(this.url+'api/course/list?org=' + this.org);
   }
 
   showBlocks(id:any):Observable<any>{

@@ -47,11 +47,15 @@ export class ConsoleuserComponent implements OnInit {
   coursesearch: any[];
   isFindOk: boolean;
   messageNotFound: any;
+	instanceNameCase: string;
+	instanceTitle: string;
 
 
   constructor(private userService: UserService, private course: CourseService, private router: Router) {
     this.token = this.userService.getToken();
     this.identiti = this.userService.getIdentiti();
+		this.instanceNameCase = environment.instanceName.toUpperCase();
+		this.instanceTitle = environment.instanceTitle;
   }
 
   ngOnInit() {

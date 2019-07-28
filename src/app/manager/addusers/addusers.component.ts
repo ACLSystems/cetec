@@ -17,7 +17,7 @@ import {
   NgbModule
   } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../../shared/sharedservices/user.service';
-
+import { environment } from './../../../environments/environment';
 
 
 @Component({
@@ -46,6 +46,7 @@ export class AddusersComponent implements OnInit {
   idgroup: any;
   codegroup: any;
   course: any;
+	org:string;
   orgName: any;
 
   carrerList: any [] = [];
@@ -127,6 +128,7 @@ export class AddusersComponent implements OnInit {
         this.orgName = params.orgUnit;
       }
     });
+		this.org = environment.instanceName;
     this.userindividual = 0;
     this.personsinglemuir = new personmuir('', '', '', '');
   }
@@ -252,7 +254,7 @@ export class AddusersComponent implements OnInit {
         }
         this.typecorporate = new corporate(this.parsetypeStudent(idstudent.Tipo));
 // tslint:disable-next-line: max-line-length
-        this.user = new usermuir(this.person, this.passwordGenerator(idstudent.Numero, this.person.name, this.person.fatherName), 'conalep', this.orgName, this.codegroup, this.numberrequest, this.studentsinglemuir, this.typecorporate);
+        this.user = new usermuir(this.person, this.passwordGenerator(idstudent.Numero, this.person.name, this.person.fatherName), this.org, this.orgName, this.codegroup, this.numberrequest, this.studentsinglemuir, this.typecorporate);
         this.managerServices.createuserbymanager(this.user).subscribe(data => {
           if (data.uri !== null) {
             this.studenstTemp.push(data.userid);
@@ -277,7 +279,7 @@ export class AddusersComponent implements OnInit {
       } else if (idstudent.Usuario === 'Externo' || idstudent.Usuario === 'externo') {
         this.studentexternalmuir = new studentexternalmuir('external', this.parsetypeStudent(idstudent.Tipo));
 // tslint:disable-next-line: max-line-length
-        this.userexternal = new userexternalmuir(this.person, this.passwordGenerator(idstudent.Numero, this.person.name, this.person.fatherName), 'conalep', this.orgName, this.codegroup, this.numberrequest, this.studentexternalmuir);
+        this.userexternal = new userexternalmuir(this.person, this.passwordGenerator(idstudent.Numero, this.person.name, this.person.fatherName), this.org, this.orgName, this.codegroup, this.numberrequest, this.studentexternalmuir);
         this.managerServices.createuserbymanager(this.userexternal).subscribe(data => {
           if (data.uri !== null) {
             this.studenstTemp.push(data.userid);
@@ -603,7 +605,7 @@ export class AddusersComponent implements OnInit {
   Metodo para obtener el listado de carreras
   */
   getCarreras() {
-    this.managerServices.getCarreras('conalep').subscribe(
+    this.managerServices.getCarreras(this.org).subscribe(
       data => {
         this.carrerList = data.message.results;
       }, error => {
@@ -659,12 +661,12 @@ export class AddusersComponent implements OnInit {
       this.studentsinglemuir = new studentmuir(this.typestudent, this.career, this.termn);
       this.typecorporate = new corporate(this.corptype);
 // tslint:disable-next-line: max-line-length
-      this.user = new usermuir(this.personsinglemuir, this.passwordGenerator(0, this.personsinglemuir.name, this.personsinglemuir.fatherName), 'conalep', this.orgName, this.codegroup, this.numberrequest, this.studentsinglemuir, this.typecorporate);
+      this.user = new usermuir(this.personsinglemuir, this.passwordGenerator(0, this.personsinglemuir.name, this.personsinglemuir.fatherName), this.org, this.orgName, this.codegroup, this.numberrequest, this.studentsinglemuir, this.typecorporate);
       this.newregister(this.user, this.user.password);
     } else if (this.typestudent === 'external') {
       this.studentexternalmuir = new studentexternalmuir(this.typestudent, this.corptype);
 // tslint:disable-next-line: max-line-length
-      this.userexternal = new userexternalmuir(this.personsinglemuir, this.passwordGenerator(0, this.personsinglemuir.name, this.personsinglemuir.fatherName), 'conalep', this.orgName, this.codegroup, this.numberrequest, this.studentexternalmuir);
+      this.userexternal = new userexternalmuir(this.personsinglemuir, this.passwordGenerator(0, this.personsinglemuir.name, this.personsinglemuir.fatherName), this.org, this.orgName, this.codegroup, this.numberrequest, this.studentexternalmuir);
       this.newregister(this.userexternal, this.userexternal.password);
     }
   }

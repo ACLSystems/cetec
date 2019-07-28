@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { HomeService } from './../homeservices/home.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-quotation',
@@ -24,19 +25,24 @@ export class QuotationComponent implements OnInit, DoCheck {
 
   tipo:any;
   sta:any;
+	instanceName:string;
+	instanceNameCase:string;
 
-  querystates:any = {
-    type:"state",
-    parent:"conalep"
-  }
+  querystates:any;
 
   constructor(private homeservice:HomeService) { }
 
   ngOnInit() {
+		this.instanceName = environment.instanceName;
+		this.instanceNameCase = environment.instanceName.toUpperCase();
     this.loading = true;
-    this.homeservice.getStates("conalep",this.querystates).subscribe(data=>{
+    this.homeservice.getStates(environment.instanceName,this.querystates).subscribe(data=>{
       this.states = data.message.ous;
     });
+		this.querystates = {
+			type:"state",
+	    parent:environment.instanceName
+		};
 
     this.homeservice.getCoursesOrg().subscribe(data=>{
       this.courses = data.body.message.courses;
@@ -48,8 +54,8 @@ export class QuotationComponent implements OnInit, DoCheck {
     this.validateFirstForm();
   }
 
-  getType(tipe){
-    this.tipo = tipe;
+  getType(type){
+    this.tipo = type;
   }
 
   getCampus(state){
@@ -59,7 +65,7 @@ export class QuotationComponent implements OnInit, DoCheck {
       type:'campus',
       parent:this.sta
     };
-    this.homeservice.getStates("conalep",querycampus).subscribe(data=>{
+    this.homeservice.getStates(this.instanceName,querycampus).subscribe(data=>{
       this.campus = data.message.ous;
     });
   }

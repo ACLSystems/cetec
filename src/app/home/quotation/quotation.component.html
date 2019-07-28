@@ -78,7 +78,7 @@
               <hr>
               <div class="row">
                 <div class="col">
-                  <h6>Imparte <small>CONALEP</small></h6>
+                  <h6>Imparte <small>{{instanceNameCase}}</small></h6>
                 </div>
                 <div class="col">
                   <h6>Categorías <small>{{item.categories}}</small></h6>
@@ -138,8 +138,8 @@
           <label for="">El manual del participante</label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Impreso y engargolado por Conalep, a color</option>
-            <option value="">Impreso y engargolado por Conalep, a blanco y negro</option>
+            <option value="">Impreso y engargolado por {{instanceNameCase}}, a color</option>
+            <option value="">Impreso y engargolado por {{instanceNameCase}}, a blanco y negro</option>
             <option value="">En dispositivo / Medio electrónico</option>
             <option value="">El interesado (Empresa/Institución) lo proporciona</option>
             <option value="">No aplica</option>
@@ -153,7 +153,7 @@
           <label for="">Los insumos para practicas (solo para cursos técnicos) </label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Por parte del Conalep</option>
+            <option value="">Por parte del {{instanceNameCase}}</option>
             <option value="">Por parte del interesado</option>
             <option value="">No aplica</option>
           </select>
@@ -162,7 +162,7 @@
           <label for="">El equipo y herramienta necesarios (solo para cursos técnicos) </label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Por parte del Conalep</option>
+            <option value="">Por parte del {{instanceNameCase}}</option>
             <option value="">Por parte del interesado</option>
             <option value="">No aplica</option>
           </select>
@@ -171,7 +171,7 @@
           <label for="">El equipo de cómputo y software (para cursos de informática) </label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Por parte del Conalep</option>
+            <option value="">Por parte del {{instanceNameCase}}</option>
             <option value="">Por parte del interesado</option>
             <option value="">No aplica</option>
           </select>
@@ -184,7 +184,7 @@
           <label for="">¿Desea incluir un servicio básico de cafetería? </label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Si, por parte del Conalep</option>
+            <option value="">Si, por parte del {{instanceNameCase}}</option>
             <option value="">Si, por parte del interesado</option>
             <option value="">No aplica</option>
           </select>
@@ -223,7 +223,7 @@
           <label for="">Se requiere que la capacitación se brinde en </label>
           <select class="form-control" name="">
             <option value="">Seleccione una opción</option>
-            <option value="">Instalaciones del Conalep</option>
+            <option value="">Instalaciones del {{instanceNameCase}}</option>
             <option value="">Instalaciones del interesado</option>
             <option value="">(Ambos)</option>
           </select>
@@ -306,7 +306,7 @@
   <div class="alert alert-success" role="alert">
     <h3 class="text-center"> <i class="fas fa-exclamation-circle"></i> Aviso importante</h3>
     <p class="text-justify">
-      Los costos aquí reflejados son un aproximado del valor total, para mayor información de las tarifas y formas de pago, puedes acudir al plantel CONALEP que seleccionaste
+      Los costos aquí reflejados son un aproximado del valor total, para mayor información de las tarifas y formas de pago, puedes acudir al plantel {{instanceNameCase}} que seleccionaste
     </p>
   </div>
 </div>

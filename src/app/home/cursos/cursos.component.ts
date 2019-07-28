@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { HomeService } from './../homeservices/home.service';
 import { Areas } from './../../models/temp/areas';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-cursos',
@@ -24,9 +25,14 @@ export class CursosComponent implements OnInit {
   public cursoslist//:any[]=[];
   public course:any[]=[];
   public keywords:any[]=[];
+	public instanceName:string;
+	public instanceTitle:string;
+	public instanceNameCase:string;
 
   constructor(private homeService:HomeService, private _router:Router) {
-    this.org='conalep';
+    this.org = environment.instanceName;
+		this.instanceTitle = environment.instanceTitle;
+		this.instanceNameCase = environment.instanceName.toUpperCase();
     this.ar = new Areas('');
     this.getAreas();
     this.verGrados();

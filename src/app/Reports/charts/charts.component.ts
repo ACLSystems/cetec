@@ -10,7 +10,7 @@ import { ServiceisorgService } from './../..//shared/sharedservices/serviceisorg
 
 import * as jsPDF from 'jspdf';
 import { IMGCONSTCONA } from './../../models/temp/imgconstancias';
-
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-charts',
@@ -91,10 +91,12 @@ export class ChartsComponent implements OnInit {
   public imglogo:any;
 
   public closemodal:NgbModalRef;
+	public footer:string;
 
 
   constructor(private activatedRoute:Router, private activRouter:ActivatedRoute, private modalService:NgbModal, private _srvirg:ServiceisorgService, public datePipe:DatePipe, public decimal:DecimalPipe, public slice:SlicePipe) {
-    this.imgconalogo = IMGCONSTCONA.imglogo;
+		this.footer = environment.footer;
+		this.imgconalogo = IMGCONSTCONA.imglogo;
     this.imglogo = IMGCONSTCONA.imgcona;
     this.activRouter.params.subscribe( params =>{
       if(params['query']!=null){
@@ -267,7 +269,7 @@ export class ChartsComponent implements OnInit {
     doc.setFont("georgia");
     doc.setFontType('bolditalic');
     doc.setFontSize(20);
-    doc.text(150,15,'Dirección de Servicios Tecnológicos y de Capacitación Conalep',null,null,'center');
+    doc.text(150,15,this.footer,null,null,'center');
 
     doc.setLineWidth(0.5);
     doc.line(20,23,280,23);
@@ -409,7 +411,7 @@ export class ChartsComponent implements OnInit {
         doc.setFont("georgia");
         doc.setFontType('bolditalic');
         doc.setFontSize(20);
-        doc.text(150,15,'Dirección de Servicios Tecnológicos y de Capacitación Conalep',null,null,'center');
+        doc.text(150,15,this.footer,null,null,'center');
 
         doc.setLineWidth(1.5);
         doc.line(20,25,280,25);

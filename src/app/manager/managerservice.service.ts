@@ -21,11 +21,13 @@ export class ManagerserviceService {
   public datosOk:boolean;
   public datosOkrfc:boolean;
   public url:string;
+	public org:string;
   public token;
 
 
   constructor(private http:HttpClient, private userservice:UserService) {
     this.url = environment.url;
+		this.org = environment.instanceName;
   }
 
   /*
@@ -39,7 +41,7 @@ export class ManagerserviceService {
   Metodo para obtener el listado de cursos disponibles
   */
   public getCourses():Observable<any>{
-    return this.http.get(this.url+'api/course/list?org=conalep');
+    return this.http.get(this.url+'api/course/list?org=' + this.org);
   }
 
   /*
