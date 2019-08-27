@@ -10,7 +10,7 @@
 <div *ngIf="loading">
   <nav id="courseReading" class="navbar navbar-light bg-white fixed-top">
     <a class="navbar-brand">
-      <img src="/assets/img/grupocetec.jpg" width="100" alt="">
+      <img src="{{logo}}" width="100" alt="">
     </a>
 
     <a class="navbar-brand"></a>
@@ -62,7 +62,7 @@
         </ngb-accordion> -->
       </div>
 			<div class="card-footer">
-				<button type="button" class="btn btn-info blockquote" (click)="verCurso(crs.id)">
+				<button type="button" class="btn btn-{{color}} blockquote" (click)="verCurso(crs.id)">
 					<i class="far fa-arrow-alt-circle-right"></i> Ver detalles
 				</button>
 			</div>
@@ -130,7 +130,7 @@
           <h6>Grupo <small>Grupo</small> </h6>
         </div>
       </div>
-      <button (click)="verCurso(item.id)" type="button" class="btn btn-info">
+      <button (click)="verCurso(item.id)" type="button" class="btn btn-{{color}}">
         Ir al curso
         <i class="far fa-arrow-alt-circle-right"></i>
       </button>

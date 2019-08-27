@@ -24,7 +24,7 @@
 				<div class="input-group mb-3">
           <input type="text" class="form-control" #wordcode placeholder="Ingresa correo electrónico del alumno">
           <div class="input-group-append">
-            <button class="btn btn-outline-success" type="button" (click)="searchUser(wordcode.value)">
+            <button class="btn btn-outline-{{color}}" type="button" (click)="searchUser(wordcode.value)">
               <i [ngClass]=" { 'fa-search':!loading, 'fa-sync fa-spin':loading }" class="fa"></i>
               <span *ngIf="!loading">Buscar</span>
               <span *ngIf="loading">Procesando</span>
@@ -61,7 +61,7 @@
 								>
 							</div>
 						</div><br>
-						<button class="btn btn-outline-info" type="button" (click)="setUser(wordcode.value, name.value, fatherName.value, motherName.value)">
+						<button class="btn btn-outline-{{color}}" type="button" (click)="setUser(wordcode.value, name.value, fatherName.value, motherName.value)">
               <i [ngClass]=" { 'fa-search':!loading, 'fa-sync fa-spin':loading }" class="fa"></i>
               <span *ngIf="!loading">Guardar</span>
               <span *ngIf="loading">Guardando</span>

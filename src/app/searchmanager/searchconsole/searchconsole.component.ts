@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
 import { UserService } from './../../shared/sharedservices/user.service';
 import { NgbModule, NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-searchconsole',
@@ -28,20 +29,23 @@ export class SearchconsoleComponent implements OnInit {
   closemodal:NgbModalRef;
   public emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  identity;
-  username;
+  identity: any;
+  username: string;
+	color: string;
+
 
   constructor(private serviceorg:ServiceisorgService, private userservice:UserService,private modalService:NgbModal) { }
 
   ngOnInit() {
     this.identity = this.userservice.getidentity();
+		this.color = environment.color;
     this.getgroups();
   }
 
   /*
   Metodo para consultar la información del usuario
   */
-  searchUser(wordcode){
+  searchUser(wordcode:string){
     this.loading = true;
     this.userAccount = [];
 		this.messageError = 'Buscando usuario...';

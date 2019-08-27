@@ -165,7 +165,7 @@ export class CourseService {
   }
 
   getCoursesOrg():Observable<any>{
-    return this.http.get(this.url+'api/course/list?org=conalep');
+    return this.http.get(this.url+'api/course/list?org=' + environment.instanceName);
   }
 
   showBlocks(id:any):Observable<any>{

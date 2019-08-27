@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute,Router } from '@angular/router';
+//import { FormControl } from '@angular/forms';
+import { ActivatedRoute
+	//Router
+} from '@angular/router';
 import { ManagerserviceService } from './../managerservice.service';
 import { UserService } from './../../shared/sharedservices/user.service';
-import { NgbModule, NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import {
+	//NgbModule,
+	NgbModal,
+	//ModalDismissReasons,
+	NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { fiscaluser, fiscalusernew, fiscaladdress, fiscalupdate, fiscaluserupdates, fiscalusercorp, fiscalusernewcorp, fiscalticketdates, fiscalticketmodel, fiscalemails, roostermodels} from './../manager.models';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-checkrequest',
@@ -90,14 +97,14 @@ export class CheckrequestComponent implements OnInit {
       this.parent = data.message.ou.parent;
       this.state = data.message.ou.state;
       this.longname = data.message.ou.longName;
-      if(this.parent=='conalep' && this.state=='conalep'){
+      if(this.parent==environment.instanceName && this.state==environment.instanceName){
         this.getStatesOU();
         this.orgusstate = true;
         this.orgusname = true;
-      }else if(this.parent=='conalep' && this.state!='conalep'){
+      }else if(this.parent==environment.instanceName && this.state!=environment.instanceName){
         this.getOrgUnits(this.state);
         this.orgusname = true;
-      }else if(this.parent!='conalep' && this.state==this.parent){
+      }else if(this.parent!=environment.instanceName && this.state==this.parent){
         this.orgusstate = false;
         this.stateBoolean = true;
         this.orgusname = true;
@@ -115,9 +122,9 @@ export class CheckrequestComponent implements OnInit {
   public getStatesOU(){
     let query1={
         type:"state",
-        parent:"conalep"
+        parent:environment.instanceName
       };
-    this.managerservice.getStates('conalep', query1).subscribe(data=>{
+    this.managerservice.getStates(environment.instanceName, query1).subscribe(data=>{
       let objr = data.message;
       this.statesOU = objr.ous;
       },error=>{
@@ -133,7 +140,7 @@ export class CheckrequestComponent implements OnInit {
       type:"campus",
       parent:this.managerservice.parserString(state)
     };
-    this.managerservice.getStates('conalep',query1).subscribe(data=>{
+    this.managerservice.getStates(environment.instanceName,query1).subscribe(data=>{
       this.orgUS = data.message.ous;
       this.stateBoolean = true;
     },error=>{

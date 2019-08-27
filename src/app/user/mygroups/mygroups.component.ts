@@ -2,7 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from './../../shared/sharedservices/course.service';
 import { UserService } from './../../shared/sharedservices/user.service';
-
+import { environment } from './../../../environments/environment';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class MygroupsComponent implements OnInit {
   cursosnext: any[] = [];
   loading = false;
   messageNewUser = false;
+	color:string;
 
   constructor(private router: Router, private user: UserService, private course: CourseService) {
     this.identity = this.user.getidentity();
@@ -28,6 +29,7 @@ export class MygroupsComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.identity = this.user.getidentity();
+		this.color = environment.color;
     this.getCourseUser();
   }
 

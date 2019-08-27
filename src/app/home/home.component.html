@@ -70,7 +70,7 @@
   <div class="card-group">
 
     <!--Card 1-->
-    <div class="card text-info bg-white mb-3">
+    <div class="card text-{{color}} bg-white mb-3">
       <div class="card-title text-center" style="margin-top:15px">
         <i class="fas fa-globe fa-3x"></i>
         <h4>¿Por qué tomar un curso en línea?</h4>
@@ -98,7 +98,7 @@
     <!--  -->
 
     <!--Card 2-->
-    <div class="card text-info bg-white mb-3">
+    <div class="card text-{{color}} bg-white mb-3">
       <div class="card-title text-center" style="margin-top:15px">
         <i class="fas fa-cloud fa-3x"></i>
         <h4>GRUPO CETEC</h4>
@@ -117,7 +117,7 @@
     <!--  -->
 
     <!--Card 3-->
-    <div class="card text-info bg-white mb-3">
+    <div class="card text-{{color}} bg-white mb-3">
       <!-- <div class="card-title text-center" style="margin-top:15px">
         <img src="assets/img/stc.gif" alt="">
       </div> -->
@@ -130,7 +130,7 @@
           Regístrate y se parte de la nueva era de educación en línea.
         </p>
         <!--div class="text-center">
-          <button type="button" name="button" class="btn btn-outline-info blockquote" [routerLink]="['/signin']">
+          <button type="button" name="button" class="btn btn-outline-{{color}} blockquote" [routerLink]="['/signin']">
             <i class="fas fa-user-plus"></i>
             Regístrate
           </button>
@@ -142,14 +142,14 @@
   <!--Termina la seccion informativa de la plataforma-->
   <!--Seccion de tarjetas con informacion de los cursos-->
   <hr>
-  <h3 class="text-center text-info">Nuestros Cursos</h3>
+  <h3 class="text-center text-{{color}}">Nuestros Cursos</h3>
   <div class="card-group">
     <div class="card" style="width: 18rem;" *ngFor="let crs of cursos | paginate: { itemsPerPage: 5, currentPage: p }">
       <img class="card-img-top imagenesCurso" [src]="crs.image" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{crs.title}}</h5>
         <p class="card-text">{{crs.description | slice:0:50}} ... </p>
-        <button (click)="verCurso(crs.id)" type="button" class="btn btn-info">Ir al curso <i class="far fa-arrow-alt-circle-right"></i></button>
+        <button (click)="verCurso(crs.id)" type="button" class="btn btn-{{color}}">Ir al curso <i class="far fa-arrow-alt-circle-right"></i></button>
       </div>
     </div>
   </div>
@@ -162,7 +162,7 @@
 
   <!--Seccion inferior de informacion de la plataforma-->
   <div class="row bg-white" style="margin-top:15px">
-    <div class="container text-info">
+    <div class="container text-{{color}}">
       <!-- <h3 class="text-center" style="margin-bottom:20px">{{siteName}}</h3> -->
       <h4 class="text-justify">
         <p>
@@ -173,7 +173,7 @@
         </p>
       </h4>
       <!--div class="text-center">
-          <a type="button" name="button" class="btn btn-outline-info blockquote" [routerLink]="['/signin']">
+          <a type="button" name="button" class="btn btn-outline-{{color}} blockquote" [routerLink]="['/signin']">
             <i class="fas fa-user-plus"></i>
             Regístrate
           </a>

@@ -1,6 +1,6 @@
 import { Areas } from './../../models/temp/areas';
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+//import { FormControl } from '@angular/forms';
 import { HomeService } from './../homeservices/home.service';
 import { Login } from './../../shared/login/login';
 import { Person } from './../../models/person/person';
@@ -11,6 +11,7 @@ import { Student } from './../../models/student/student';
 import { StudentExternal } from './../../models/student/studentExternal';
 import { Userlms } from './../../models/userlms/userlms';
 import { UserTemp } from './../../models/temp/usertemp';
+import { environment } from './../../../environments/environment';
 
 
 
@@ -52,7 +53,7 @@ export class SigninComponent implements OnInit, DoCheck {
   public query1: any;
 
   constructor(private signinService: SigninService, private homeService: HomeService, private route: Router) {
-    this.org = 'conalep';
+    this.org = environment.instanceName;
     this.person = new Person('', '', '', '', new Date());
     this.student = new Student('', '', '');
     this.studentE = new StudentExternal('', '', '');
@@ -77,7 +78,7 @@ export class SigninComponent implements OnInit, DoCheck {
   */
   public onSubmit(username: any, password: any) {
 
-    this.usertemp.org = 'conalep';
+    this.usertemp.org = environment.instanceName;
     this.person.email  = username;
 
     if (this.student.type === 'internal') {
@@ -103,12 +104,12 @@ export class SigninComponent implements OnInit, DoCheck {
   }
 
   /*
-  Metodo para obtener el listado de los estados por parte del conalep
+  Metodo para obtener el listado de los estados
   */
   public getOrgUnits() {
     this.query1 = {
         type: 'state',
-        parent: 'conalep'
+        parent: this.org
       };
     this.signinService.getStates(this.org, this.query1).subscribe( data => {
       const objr = data.message;

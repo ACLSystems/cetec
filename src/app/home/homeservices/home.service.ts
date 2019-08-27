@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -10,9 +10,11 @@ export class HomeService {
   public identity: any;
   public token: any;
   public roles: any;
+	public org: string;
 
   constructor(private http: HttpClient) {
     this.url = environment.url;
+		this.org = environment.instanceName;
   }
 
   /*
@@ -77,7 +79,7 @@ export class HomeService {
   Metodo para traer los cursos de la organizacion
   */
   getCoursesOrg(): Observable<any> {
-    return this.http.get(this.url+'api/course/list?org=conalep', {observe: 'response'});
+    return this.http.get(this.url+'api/course/list?org=' + this.org, {observe: 'response'});
   }
 
   /*

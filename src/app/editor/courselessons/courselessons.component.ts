@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-courselessons',
@@ -14,6 +15,7 @@ loading:boolean;
 courseid;
 identity;
 listblock:any []=[];
+color:string;
 
 constructor(private router:Router, private activatedRoute:ActivatedRoute, private user:UserService, private serviceorg:ServiceisorgService) {
   this.activatedRoute.params.subscribe(params=>{
@@ -23,6 +25,7 @@ constructor(private router:Router, private activatedRoute:ActivatedRoute, privat
 
 ngOnInit() {
   this.identity = this.user.getidentity();
+	this.color = environment.color;
   this.getListBlock();
 }
 

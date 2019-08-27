@@ -15,6 +15,7 @@ import { ModifyBlock } from './../../models/course/modifyblock';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 
 
@@ -88,6 +89,7 @@ export class CourseeditComponent implements OnInit {
   };
 
   public closemodal:NgbModalRef;
+	color: string;
 
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private user:UserService, private serviceorg:ServiceisorgService, private modalService:NgbModal) {
     this.activatedRoute.params.subscribe(params=>{
@@ -102,6 +104,7 @@ export class CourseeditComponent implements OnInit {
 
   ngOnInit() {
     this.identity = this.user.getidentity();
+		this.color = environment.color;
     this.getBlock();
   }
 

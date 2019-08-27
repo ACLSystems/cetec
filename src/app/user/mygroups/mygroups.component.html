@@ -42,7 +42,7 @@
 									<div class="container">
 										<div class="row"><h6 class="card-title">{{crs.curso.course}} ({{crs.curso.courseCode}})</h6></div>
 										<small class="text-justify">
-										<div class="row"><span class="card-subtitle text-success"><i class="fas fa-users"></i> {{crs.curso.name}} ({{crs.curso.code}})</span></div>
+										<div class="row"><span class="card-subtitle text-{{color}}"><i class="fas fa-users"></i> {{crs.curso.name}} ({{crs.curso.code}})</span></div>
 										<div class="row"><span class="card-text"><i class="fas fa-user-tie"></i> {{crs.curso.instructor}}</span></div></small>
 									</div>
 									<!-- <table class="table table-sm">
@@ -69,14 +69,14 @@
 									</table> -->
                 </div>
                 <div class="card-footer">
-                  <button type="button" class="btn btn-success blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
+                  <button type="button" class="btn btn-{{color}} blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
                     <i class="far fa-arrow-alt-circle-right"></i> Ir a mi curso
                   </button>
                 </div>
               </div>
             </div>
             <br>
-            <div class="text-center text-success">
+            <div class="text-center text-{{color}}">
               <pagination-controls (pageChange)="p = $event" previousLabel="Atras" nextLabel="Siguiente"></pagination-controls>
             </div>
         </ng-template>
@@ -107,7 +107,7 @@
                 </div>
               </div>
               <br>
-              <div class="text-center text-success">
+              <div class="text-center text-{{color}}">
                 <pagination-controls (pageChange)="p = $event" previousLabel="Atras" nextLabel="Siguiente"></pagination-controls>
               </div>
         </ng-template>
@@ -131,14 +131,14 @@
                     <i class="fas fa-hashtag"></i> Código: {{crs.curso.courseCode}}
                   </div>
                   <div class="card-footer">
-                    <button type="button" class="btn btn-success blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
+                    <button type="button" class="btn btn-{{color}} blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
                       <i class="far fa-arrow-alt-circle-right"></i> Ir al curso
                     </button>
                   </div>
                 </div>
               </div>
               <br>
-              <div class="text-center text-success">
+              <div class="text-center text-{{color}}">
                 <pagination-controls (pageChange)="p = $event" previousLabel="Atras" nextLabel="Siguiente"></pagination-controls>
               </div>
         </ng-template>

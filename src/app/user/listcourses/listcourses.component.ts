@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-listcourses',
@@ -19,6 +20,7 @@ export class ListcoursesComponent implements OnInit, DoCheck {
   public rolAdmin : boolean;
   public rolAutho : boolean;
   public rolInstructor : boolean;
+	public instanceTitle: string;
 
   /*
   Constructor de la clase
@@ -26,6 +28,7 @@ export class ListcoursesComponent implements OnInit, DoCheck {
   constructor(private _router:Router, private _activeRouter:ActivatedRoute, private _user:UserService) {
     this.identity = this._user.getidentity();
     this.token = this._user.getToken();
+		this.instanceTitle = environment.instanceTitle
   }
 
   /*

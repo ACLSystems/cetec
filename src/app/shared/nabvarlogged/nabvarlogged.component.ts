@@ -41,11 +41,15 @@ export class NabvarloggedComponent implements OnInit, DoCheck {
   itemid: any;
   studentid: any;
   production: any;
+	logo: string;
+	color: string;
 
   constructor(private userService: UserService, private router: Router, private course: CourseService) {
     this.token = this.userService.getToken();
     this.identity = this.userService.getidentity();
     this.production = environment.production;
+		this.logo = environment.logo;
+		this.color = environment.color;
     this.getRolesUser();
   }
 

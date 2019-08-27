@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CourseshopComponent } from '../courseshop/courseshop.component';
 import { HomeService } from './../homeservices/home.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-curso',
@@ -27,6 +28,7 @@ export class CursoComponent implements OnInit {
   modaltype: any;
   members = 0;
   maxmembers: number [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	color: string;
 
   constructor(private modalService: NgbModal,
               private activeRouter: ActivatedRoute,
@@ -35,6 +37,7 @@ export class CursoComponent implements OnInit {
     this.identity = this.homeService.getidentity();
     this.token = this.homeService.getToken();
     this.costo = 30;
+		this.color = environment.color;
     this.activeRouter.params.subscribe( params =>{
       if (params.id != null) {
         this.idc = params.id;

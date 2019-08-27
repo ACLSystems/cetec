@@ -47,6 +47,8 @@ export class ConsoleuserComponent implements OnInit {
   coursesearch: any[];
   isFindOk: boolean;
   messageNotFound: any;
+	color:string;
+	logo:string;
 
 
   constructor(private userService: UserService, private course: CourseService, private router: Router) {
@@ -57,6 +59,8 @@ export class ConsoleuserComponent implements OnInit {
   ngOnInit() {
     this.token = this.userService.getToken();
     this.identity = this.userService.getidentity();
+		this.color = environment.color;
+		this.logo = environment.logo;
 		if(this.token === null && this.identity === null) {
 			this.router.navigate(['/home']);
 		} else {

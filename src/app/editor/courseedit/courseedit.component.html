@@ -2,7 +2,7 @@
   <ngb-tabset>
     <ngb-tab>
       <ng-template ngbTabTitle>
-        <div class="text-success">
+        <div class="text-{{color}}">
           <i class="fas fa-cogs"></i> Datos de la lección
         </div>
       </ng-template>
@@ -12,7 +12,7 @@
           <div class="col-11">
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Visible
                 </div>
               </div>
@@ -29,17 +29,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockIsVisible" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editVisible()">
+                <button *ngIf="!editblockIsVisible" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editVisible()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockIsVisible" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveVisible(contentblock.blockId)">
+                <button *ngIf="editblockIsVisible" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveVisible(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Estatus
                 </div>
               </div>
@@ -56,17 +56,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editbblockStatus" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editStatus()">
+                <button *ngIf="!editbblockStatus" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editStatus()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editbblockStatus" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveStatus(contentblock.blockId)">
+                <button *ngIf="editbblockStatus" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveStatus(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Título
                 </div>
               </div>
@@ -79,17 +79,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockTitle" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editTitle()">
+                <button *ngIf="!editblockTitle" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editTitle()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockTitle" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveTitle(contentblock.blockId)">
+                <button *ngIf="editblockTitle" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveTitle(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Código del bloque
                 </div>
               </div>
@@ -102,17 +102,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockCode" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editBlockCode()">
+                <button *ngIf="!editblockCode" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editBlockCode()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockCode" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockCode(contentblock.blockId)">
+                <button *ngIf="editblockCode" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockCode(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Contenido MultiMedia
                 </div>
               </div>
@@ -125,17 +125,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockMedia" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editMedia()">
+                <button *ngIf="!editblockMedia" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editMedia()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockMedia" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveMedia(contentblock.blockId)">
+                <button *ngIf="editblockMedia" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveMedia(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Ponderador del bloque
                 </div>
               </div>
@@ -148,17 +148,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockWb" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editBlockW()">
+                <button *ngIf="!editblockWb" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editBlockW()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockWb" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockW(contentblock.blockId)">
+                <button *ngIf="editblockWb" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockW(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Ponderador del cuestionario
                 </div>
               </div>
@@ -171,17 +171,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockWq" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editBlockWQ()">
+                <button *ngIf="!editblockWq" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editBlockWQ()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockWq" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockWQ(contentblock.blockId)">
+                <button *ngIf="editblockWq" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockWQ(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
             <div class="row">
               <div class="col-5">
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-{{color}}" role="alert">
                   Ponderador de la tarea
                 </div>
               </div>
@@ -194,17 +194,17 @@
                 </div>
               </div>
               <div class="col-1">
-                <button *ngIf="!editblockWt" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Editar" (click)="editBlockWT()">
+                <button *ngIf="!editblockWt" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Editar" (click)="editBlockWT()">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button *ngIf="editblockWt" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockWT(contentblock.blockId)">
+                <button *ngIf="editblockWt" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveBlockWT(contentblock.blockId)">
                   <i class="far fa-save"></i>
                 </button>
               </div>
             </div>
           </div>
           <div class="col-1">
-            <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
+            <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
               <i class="fas fa-reply"></i>
             </button>
           </div>
@@ -213,7 +213,7 @@
     </ngb-tab>
     <ngb-tab>
       <ng-template ngbTabTitle>
-        <div class="text-success">
+        <div class="text-{{color}}">
           <i class="fas fa-book"></i> Contenido
         </div>
       </ng-template>
@@ -238,18 +238,18 @@
             </div>
           </div>
           <div class="col-1">
-            <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
+            <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
               <i class="fas fa-reply"></i>
             </button>
-            <button *ngIf="!editC" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Editar" (click)="editContent()">
+            <button *ngIf="!editC" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Editar" (click)="editContent()">
               <i class="fas fa-code"></i>
             </button>
 
-            <button *ngIf="editC" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
+            <button *ngIf="editC" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
               <i class="fas fa-eye"></i>
             </button>
 
-            <button *ngIf="editC" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveContent(contentblock.blockId)">
+            <button *ngIf="editC" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveContent(contentblock.blockId)">
               <i class="far fa-save"></i>
             </button>
           </div>
@@ -262,7 +262,7 @@
     <!---->
     <ngb-tab>
       <ng-template ngbTabTitle>
-        <div class="text-success">
+        <div class="text-{{color}}">
           <i class="fas fa-info-circle"></i> Cuestionario
         </div>
       </ng-template>
@@ -270,7 +270,7 @@
       <ng-template ngbTabContent>
         <div *ngFor="let item of contentblock.questionnarie.questions; let id = index" class="row" style="margin-top:15px">
           <div *ngIf="!editQ" class="col-11">
-            <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.questLabel}}</span>
+            <span class="text-{{color}}" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.questLabel}}</span>
             <div [innerHTML]="item.header">
 
             </div>
@@ -282,7 +282,7 @@
               <div *ngFor="let itemmap of item.group; let idMap = index">
                 <div class="row" >
                   <div class="col-6">
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-{{color}}" role="alert">
                       <div [innerHTML]="itemmap">
 
                       </div>
@@ -308,7 +308,7 @@
 
                         </div>
                         <div class="col-6">
-                          <div class="alert alert-success" role="alert">
+                          <div class="alert alert-{{color}}" role="alert">
                             <div [innerHTML]="itemmap">
 
                             </div>
@@ -318,7 +318,7 @@
 
                       <div *ngIf="ordercomp == 1" class="row">
                         <div class="col-6">
-                          <div class="alert alert-success" role="alert">
+                          <div class="alert alert-{{color}}" role="alert">
                             <div [innerHTML]="itemmap">
 
                             </div>
@@ -333,7 +333,7 @@
               <!--div *ngIf="item.display.length == 0"-->
                 <div class="row" *ngFor="let itemmap of item.group;let idquestion = index;">
                   <div class="col-6">
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-{{color}}" role="alert">
                       <div [innerHTML]="itemmap">
 
                       </div>
@@ -346,7 +346,7 @@
             <hr>
           </div>
           <div *ngIf="editQ" class="col-11">
-            <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.questLabel}}</span>
+            <span class="text-{{color}}" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.questLabel}}</span>
             <!---->
             <div *ngIf="item.header!=null">
               <div class="editor block">
@@ -417,18 +417,18 @@
             <hr>
           </div>
           <div class="col-1">
-            <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
+            <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
               <i class="fas fa-reply"></i>
             </button>
-            <button *ngIf="!editQ" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Editar" (click)="editQuestion()">
+            <button *ngIf="!editQ" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Editar" (click)="editQuestion()">
               <i class="fas fa-code"></i>
             </button>
 
-            <button *ngIf="editQ" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditorQuestion)">
+            <button *ngIf="editQ" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditorQuestion)">
               <i class="fas fa-eye"></i>
             </button>
 
-            <button *ngIf="editQ" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveQuestion()">
+            <button *ngIf="editQ" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveQuestion()">
               <i class="far fa-save"></i>
             </button>
           </div>
@@ -440,7 +440,7 @@
     <!---->
     <ngb-tab>
       <ng-template ngbTabTitle>
-        <div class="text-success">
+        <div class="text-{{color}}">
           <i class="fas fa-thumbtack"></i> Tarea
         </div>
       </ng-template>
@@ -449,7 +449,7 @@
         <div *ngIf="contentblock.task.items">
           <div *ngFor="let item of contentblock.task.items; let id = index" class="row" style="margin-top:15px">
             <div *ngIf="!editT" class="col-11">
-              <span class="text-success"><i class="fas fa-thumbtack"></i> {{item.itemLabel}}</span>
+              <span class="text-{{color}}"><i class="fas fa-thumbtack"></i> {{item.itemLabel}}</span>
               <div [innerHTML]="item.itemText">
 
               </div>
@@ -457,7 +457,7 @@
             </div>
 
             <div *ngIf="editT" class="col-11">
-              <span class="text-success"><i class="fas fa-thumbtack"></i> {{item.itemLabel}}</span>
+              <span class="text-{{color}}"><i class="fas fa-thumbtack"></i> {{item.itemLabel}}</span>
               <div class="editor block">
             		<app-ngx-editor [config]="editorConfig" [spellcheck]="true" [(ngModel)]="item.itemText"></app-ngx-editor>
             	</div>
@@ -471,18 +471,18 @@
             </div>
 
             <div class="col-1">
-              <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
+              <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Regresar" (click)="returnCourse()">
                 <i class="fas fa-reply"></i>
               </button>
-              <button *ngIf="!editT" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Editar" (click)="editTask()">
+              <button *ngIf="!editT" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Editar" (click)="editTask()">
                 <i class="fas fa-code"></i>
               </button>
 
-              <button *ngIf="editT" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditorTask)">
+              <button *ngIf="editT" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditorTask)">
                 <i class="fas fa-eye"></i>
               </button>
 
-              <button *ngIf="editT" type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveTask()">
+              <button *ngIf="editT" type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Guardar Cambios" (click)="saveTask()">
                 <i class="far fa-save"></i>
               </button>
             </div>

@@ -14,7 +14,7 @@
 <div *ngIf="identity && !loading" class="container">
   <div class="row">
     <div class="col-4">
-      <button type="button" class="btn btn-success" (click)="showModal(newRequest)">
+      <button type="button" class="btn btn-{{color}}" (click)="showModal(newRequest)">
         <i class="fas fa-plus"></i> Nueva Solicitud
       </button>
     </div>
@@ -22,7 +22,7 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" #numberreq placeholder="Número de solicitud" aria-label="Número de Solicitud" aria-describedby="button-addon2">
         <div class="input-group-append">
-          <button class="btn btn-outline-success" type="button" id="button-addon2" (click)="findRequest(numberreq.value)">Buscar</button>
+          <button class="btn btn-outline-{{color}}" type="button" id="button-addon2" (click)="findRequest(numberreq.value)">Buscar</button>
         </div>
       </div>
     </div>
@@ -164,7 +164,7 @@
       <label><i class="fas fa-directions"></i> Breve descripción</label>
       <input class="form-control" type="text" #label (blur)="validateLabel(label.value)" required>
       <br>
-      <button type="button" class="btn btn-success" [disabled]="!labelOk" (click)="getNewResource(label.value)">
+      <button type="button" class="btn btn-{{color}}" [disabled]="!labelOk" (click)="getNewResource(label.value)">
         <i class="fas fa-folder-plus"></i>  Crear Solicitud.
       </button>
     </form>

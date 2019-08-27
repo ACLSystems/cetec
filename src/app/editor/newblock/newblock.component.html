@@ -22,7 +22,7 @@
           </p>
         </div>
       </div>
-      <ngb-alert type="success" [dismissible]="false" *ngIf="messageCode">
+      <ngb-alert type="{{color}}" [dismissible]="false" *ngIf="messageCode">
         <b>Curso: </b>{{messageCode.title}}
       </ngb-alert>
       <div class="row">
@@ -50,16 +50,16 @@
       </p>
     </div>
     <div class="col-4">
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Regresar" (click)="returnManagerEdit()">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Regresar" (click)="returnManagerEdit()">
         <i class="fas fa-reply"></i>
       </button>
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveBlock(coursecode.value,code.value,title.value,type.value)">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveBlock(coursecode.value,code.value,title.value,type.value)">
         <i class="far fa-save"></i>
       </button>
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Cancelar">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Cancelar">
         <i class="fas fa-times"></i>
       </button>
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Agregar Sección" (click)="addSection(coursecode.value)">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Agregar Sección" (click)="addSection(coursecode.value)">
         <i class="fas fa-clone"></i>
       </button>
     </div>
@@ -87,10 +87,10 @@
     </div>
     <div class="col-1">
       <hr>
-      <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditortext)">
+      <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditortext)">
         <i class="fas fa-eye"></i>
       </button>
-      <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Revisar archivo JSON" (click)="showEditorContent(modalEditorJSON)">
+      <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Revisar archivo JSON" (click)="showEditorContent(modalEditorJSON)">
         <i class="fas fa-file-code"></i>
       </button>
     </div>
@@ -129,7 +129,7 @@
           </p>
         </div>
         <div class="col-3">
-          <button *ngIf="questions.length > 0" type="button" class="btn btn-success" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalPreviewQuestions)">
+          <button *ngIf="questions.length > 0" type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalPreviewQuestions)">
             <i class="fas fa-eye"></i>
           </button>
         </div>
@@ -152,7 +152,7 @@
         </div>
 
         <div class="col-2">
-          <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar Pregunta" (click)="saveQuestionOpt()">
+          <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar Pregunta" (click)="saveQuestionOpt()">
             <i class="fas fa-check"></i>
           </button>
         </div>
@@ -184,7 +184,7 @@
         <div class="col-6">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <button class="btn btn-success" type="button" (click)="addOption(option.value, option.value)">*Agregar opción</button>
+              <button class="btn btn-{{color}}" type="button" (click)="addOption(option.value, option.value)">*Agregar opción</button>
             </div>
             <input type="text" class="form-control" placeholder="Opción" #option required>
           </div>
@@ -234,15 +234,15 @@
     <div class="col-4">
       <hr>
 
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Agregar tarea">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Agregar tarea">
         <i class="fas fa-plus"></i>
       </button>
 
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Vista Previa">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Vista Previa">
         <i class="fas fa-eye"></i>
       </button>
 
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar tarea">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar tarea">
         <i class="fas fa-check"></i>
       </button>
 
@@ -281,7 +281,7 @@
     </div>
     <div class="col-1">
       <hr>
-      <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
+      <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
         <i class="fas fa-eye"></i>
       </button>
     </div>
@@ -306,7 +306,7 @@
     </div>
     <div class="col-1">
       <hr>
-      <button type="button" class="btn btn-success blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
+      <button type="button" class="btn btn-{{color}} blockquote" placement="bottom" ngbTooltip="Vista Previa" (click)="showEditorContent(modalEditor)">
         <i class="fas fa-eye"></i>
       </button>
     </div>
@@ -366,10 +366,10 @@
   <div class="modal-body">
     <div *ngFor="let item of questions;let idQ = index">
       <div *ngIf="item.label">
-        <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.label}} {{item.help}} </span>
+        <span class="text-{{color}}" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.label}} {{item.help}} </span>
       </div>
       <div *ngIf="!item.label">
-        <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> Pregunta {{idQ+1}} {{item.help}}</span>
+        <span class="text-{{color}}" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> Pregunta {{idQ+1}} {{item.help}}</span>
       </div>
       <!--Headers de las preguntas-->
       <div *ngIf="item.header">
@@ -385,7 +385,7 @@
       </div>
       <!--Para las preguntas que tengan pie de pagina-->
       <div *ngIf="item.footer">
-        <span class="text-success text-justify">
+        <span class="text-{{color}} text-justify">
           <i class="fas fa-quote-left"></i>
           <p>
             {{item.footer}}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../shared/sharedservices/user.service';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
+import { environment } from './../../../environments/environment';
 
 import { NewCourse } from './../../models/course/newCourse';
 @Component({
@@ -19,9 +20,11 @@ export class NewcourseComponent implements OnInit {
   messageSuccessKW:any;
   messageErrorKW:any;
   messageSuccessNC:any;
+	color:string;
 
   constructor(private user:UserService, private serviceorg:ServiceisorgService, private router:Router) {
     this.identity = this.user.getidentity();
+		this.color = environment.color;
     this.newcourse = new NewCourse('','','',null,false,null,'','','','','',0,'','');
   }
 

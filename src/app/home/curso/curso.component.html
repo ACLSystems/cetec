@@ -20,7 +20,7 @@
     <hr>
     <ngb-tabset>
       <ngb-tab>
-        <ng-template ngbTabTitle><h6 class="text-success"><i class="fas fa-book-reader"></i> Descripción del curso</h6></ng-template>
+        <ng-template ngbTabTitle><h6 class="text-{{color}}"><i class="fas fa-book-reader"></i> Descripción del curso</h6></ng-template>
         <ng-template ngbTabContent>
           <br>
           <div class="row">
@@ -29,7 +29,7 @@
                 <img [src]="curso.image" class="card-img-top">
                 <div class="card-body">
                   <div class="card-title">
-                    <h4 class="text-success">{{curso.title}}</h4>
+                    <h4 class="text-{{color}}">{{curso.title}}</h4>
                   </div>
                   Categoria: <small>{{curso.categories}}</small>
                   <br>
@@ -38,7 +38,7 @@
                   <!-- Costo: {{costo | currency:'MXN'}} -->
                 </div>
                 <!--div class="card-footer">
-                  <button type="button" class="btn btn-success blockquote" (click)="showModal(modalUser)">
+                  <button type="button" class="btn btn-{{color}} blockquote" (click)="showModal(modalUser)">
                     <i class="fas fa-user-graduate"></i> Inscribirme
                   </button>
                 </div-->
@@ -52,7 +52,7 @@
         </ng-template>
       </ngb-tab>
       <ngb-tab>
-        <ng-template ngbTabTitle><h6 class="text-success"><i class="fas fa-list"></i> Temario</h6></ng-template>
+        <ng-template ngbTabTitle><h6 class="text-{{color}}"><i class="fas fa-list"></i> Temario</h6></ng-template>
           <ng-template ngbTabContent>
             <div *ngFor="let item of block" class="card">
               <div *ngIf="item.number==0" class="card-header">
@@ -71,7 +71,7 @@
     </ngb-tabset>
     <br>
     <div class="row">
-      <button type="button" class="btn btn-success blockquote" [routerLink]="['/cursos']">
+      <button type="button" class="btn btn-{{color}} blockquote" [routerLink]="['/cursos']">
         <i class="fas fa-map-signs"></i> Seguir explorando
       </button>
     </div>

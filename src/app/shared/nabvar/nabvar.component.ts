@@ -7,10 +7,14 @@ import { environment } from '../../../environments/environment';
 })
 export class NabvarComponent implements OnInit {
   environment: any;
+	logo: string;
+	color: string;
   constructor() { }
 
   ngOnInit() {
     this.environment = environment.production;
+		this.logo = environment.logo;
+		this.color = environment.color;
   }
 
 }

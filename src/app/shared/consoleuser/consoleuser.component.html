@@ -7,7 +7,7 @@
         <input type="text" class="form-control" #wordcode placeholder="curso que busco" (blur)="findCourse(wordcode.value)">
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-outline-success">
+        <button type="button" class="btn btn-outline-{{color}}">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -45,7 +45,7 @@
 					</div>
         </div>
 				<div class="card-footer">
-					<button type="button" class="btn btn-success blockquote" (click)="verCurso(crs.id)">
+					<button type="button" class="btn btn-{{color}} blockquote" (click)="verCurso(crs.id)">
 						<i class="far fa-arrow-alt-circle-right"></i> Ver detalles
 					</button>
 				</div>
@@ -78,7 +78,7 @@
             <h6>Grupo <small>Grupo</small> </h6>
           </div>
         </div>
-        <button (click)="verCurso(item.id)" type="button" class="btn btn-success">
+        <button (click)="verCurso(item.id)" type="button" class="btn btn-{{color}}">
           Ir al curso
           <i class="far fa-arrow-alt-circle-right"></i>
         </button>
@@ -94,7 +94,7 @@
 <div *ngIf="!loading && !userlms.admin.isActive" class="container">
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand">
-      <img src="/assets/img/grupocetec.jpg" width="100">
+      <img src="{{logo}}" width="100">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

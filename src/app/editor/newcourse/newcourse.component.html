@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="col-1">
-          <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Agregar" (click)="addCat(categorie.value)">
+          <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Agregar" (click)="addCat(categorie.value)">
             <i class="fas fa-plus-circle"></i>
           </button>
         </div>
@@ -65,7 +65,7 @@
           </p>
         </div>
         <div class="col-1">
-          <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Agregar" (click)="addKw(keywords.value)">
+          <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Agregar" (click)="addKw(keywords.value)">
             <i class="fas fa-plus-circle"></i>
           </button>
         </div>
@@ -90,13 +90,13 @@
       </p>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Regresar" (click)="returnManagerEdit()">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Regresar" (click)="returnManagerEdit()">
         <i class="fas fa-reply"></i>
       </button>
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Guardar" (click)="saveNewCourse(code.value, title.value, type.value, categorie.value, isVisible.value, keywords.value, description.value, details.value, price.value, cost.value, status.value, duration.value, durationUnits.value, image.value)">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Guardar" (click)="saveNewCourse(code.value, title.value, type.value, categorie.value, isVisible.value, keywords.value, description.value, details.value, price.value, cost.value, status.value, duration.value, durationUnits.value, image.value)">
         <i class="far fa-save"></i>
       </button>
-      <button type="button" class="btn btn-success" placement="bottom" ngbTooltip="Cancelar">
+      <button type="button" class="btn btn-{{color}}" placement="bottom" ngbTooltip="Cancelar">
         <i class="fas fa-times"></i>
       </button>
     </div>

@@ -17,6 +17,7 @@ registerLocaleData(localeMx, 'es-Mx');
 export class ConstanciasComponent implements OnInit {
 
 	public captchaSiteKey: string;
+	public instanceTitle: string;
 
 	buscando: boolean;
 	messageError: string;
@@ -41,9 +42,12 @@ export class ConstanciasComponent implements OnInit {
 	}
 	certificateFound: boolean;
 	private updateDisableSubscription: Subscription;
+	color: string;
 
   constructor(private homeService: HomeService) {
 		this.captchaSiteKey = environment.captchaSiteKey;
+		this.instanceTitle = environment.instanceTitle;
+		this.color = environment.color;
 	 }
 
   ngOnInit() {

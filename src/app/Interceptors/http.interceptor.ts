@@ -13,6 +13,7 @@ export class HttpConfigInterceptor implements HttpInterceptor{
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem('token');
     if (token) {
+			//console.log('Sí hay token')
 			let decodedToken = this.getDecodedAccessToken(token);
 			let exp: Date = new Date(0);
 			exp.setSeconds(decodedToken.exp);
@@ -24,6 +25,7 @@ export class HttpConfigInterceptor implements HttpInterceptor{
 				localStorage.clear();
 			}
 			if(now < exp){
+				//console.log('Pasa')
 	      //request = request.clone({ headers: request.headers.set('x-access-token', token) });
 				request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
 			}

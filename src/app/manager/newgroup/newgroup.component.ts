@@ -125,9 +125,9 @@ export class NewgroupComponent implements OnInit{
   public getStatesOU(){
     let query1={
         type:"state",
-        parent:"conalep"
+        parent:environment.instanceName
       };
-    this.managerServices.getStates('conalep', query1).subscribe(data=>{
+    this.managerServices.getStates(environment.instanceName, query1).subscribe(data=>{
         let objr = data.message;
         this.statesOU = objr.ous;
       },error=>{
@@ -144,7 +144,7 @@ export class NewgroupComponent implements OnInit{
       type:"campus",
       parent:this.managerServices.parserString(state)
     };
-    this.managerServices.getStates('conalep',query1).subscribe(data=>{
+    this.managerServices.getStates(environment.instanceName,query1).subscribe(data=>{
       this.orgUS = data.message.ous;
       this.stateBoolean = true;
     },error=>{
@@ -172,7 +172,7 @@ export class NewgroupComponent implements OnInit{
   Metodo para obtener el listado de carreras
   */
   getCarreras(){
-    this.managerServices.getCarreras('conalep').subscribe(
+    this.managerServices.getCarreras(environment.instanceName).subscribe(
       data=>{
         this.carrerList = data.message.results;
       },error=>{
@@ -189,14 +189,14 @@ export class NewgroupComponent implements OnInit{
       this.parent = data.message.ou.parent;
       this.state = data.message.ou.state;
       this.longname = data.message.ou.longName;
-      if(this.parent=='conalep' && this.state=='conalep'){
+      if(this.parent==environment.instanceName && this.state==environment.instanceName){
         this.getStatesOU();
         this.orgusstate = true;
         this.orgusname = true;
-      }else if(this.parent=='conalep' && this.state!='conalep'){
+      }else if(this.parent==environment.instanceName && this.state!=environment.instanceName){
         this.getOrgUnits(this.state);
         this.orgusname = true;
-      }else if(this.parent!='conalep' && this.state==this.parent){
+      }else if(this.parent!=environment.instanceName && this.state==this.parent){
         this.orgusstate = false;
         this.stateBoolean = true;
         this.orgusname = true;

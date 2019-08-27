@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { FormControl } from '@angular/forms';
+//import { FormControl } from '@angular/forms';
 import { HomeService } from './homeservices/home.service';
 import { Meta } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 
@@ -13,11 +13,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   p:number = 1;
-  public token;
-  public identity;
+  public token: string;
+  public identity: string;
   public loading:boolean = false;
   public cursos:any;
   public environment: any;
+	public color: string;
   /*
   Constructor de la clase
   */
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.environment = environment.production;
+		this.color = environment.color;
     this.identity = this.homeservice.getidentity();
     this.token = this.homeservice.getToken();
     if(this.token){
@@ -47,7 +49,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public verCurso(curso){
+  public verCurso(curso:string){
     this._router.navigate(['/curso',curso]);
   }
 }

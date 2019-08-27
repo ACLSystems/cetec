@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, interval, Subscription } from 'rxjs';
+import { environment } from './../../../environments/environment';
 
 
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
@@ -39,6 +40,8 @@ export class ConsolereportsComponent implements OnInit {
 	optionsLevel2:any[]=[];
 	private updateDisableSubscription: Subscription;
 	private updateSubscription: Subscription;
+	color: string;
+
   constructor(public orgservice:ServiceisorgService, public router:Router) {
 
   }
@@ -50,6 +53,7 @@ export class ConsolereportsComponent implements OnInit {
 		this.processingEvals = true;
 		this.processMessage = 'Procesando listados.';
 		this.seconds = 600000;
+		this.color = environment.color;
 		this.getProject();
     this.updateSubscription = interval(this.seconds).subscribe(() => {
 			console.log('Refrescando cada 10 minutos');

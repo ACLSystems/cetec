@@ -33,11 +33,13 @@ export class UserconfirmComponent implements OnInit {
   public messageSuccess:string;
   public messageError:string;
   public urlLibreta:any
+	public logo: string;
 
   public token;
 
   constructor(private user:UserService, private router:Router, private activeRouter:ActivatedRoute) {
     this.urlLibreta = environment.urlLibreta;
+		this.logo = environment.logo;
     this.activeRouter.params.subscribe( params=> {
       if(params['tokentemp']!=null){
         this.token = params['tokentemp'];

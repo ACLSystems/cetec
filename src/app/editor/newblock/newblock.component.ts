@@ -20,6 +20,7 @@ import {
   } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 
 
@@ -80,6 +81,7 @@ export class NewblockComponent implements OnInit {
         ["paragraph", "blockquote", "removeBlockquote", "horizontalLine", "orderedList", "unorderedList"]
     ]
   };
+	color: string;
 
   constructor(private user:UserService, private router:Router,private serviceorg:ServiceisorgService, private modalService:NgbModal) {
     this.identity = this.user.getidentity();
@@ -89,6 +91,7 @@ export class NewblockComponent implements OnInit {
     this.coursecode = new Coursecode('');
     this.option= new Option('','');
     this.answer= new Answer('',0);
+		this.color = environment.color;
   }
 
   ngOnInit() {

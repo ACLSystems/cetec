@@ -14,12 +14,13 @@ import {
   } from './../../manager.models';
 import { ManagerserviceService } from './../../managerservice.service';
 import {
-  ModalDismissReasons,
+  //ModalDismissReasons,
   NgbModal,
   NgbModalRef,
-  NgbModule
+  //NgbModule
   } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './../../../shared/sharedservices/user.service';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-checkfac',
@@ -107,14 +108,14 @@ export class CheckfacComponent implements OnInit {
       this.parent = data.message.ou.parent;
       this.state = data.message.ou.state;
       this.longname = data.message.ou.longName;
-      if(this.parent=='conalep' && this.state=='conalep'){
+      if(this.parent==environment.instanceName && this.state==environment.instanceName){
         this.getStatesOU();
         this.orgusstate = true;
         this.orgusname = true;
-      }else if(this.parent=='conalep' && this.state!='conalep'){
+      }else if(this.parent==environment.instanceName && this.state!=environment.instanceName){
         this.getOrgUnits(this.state);
         this.orgusname = true;
-      }else if(this.parent!='conalep' && this.state==this.parent){
+      }else if(this.parent!=environment.instanceName && this.state==this.parent){
         this.orgusstate = false;
         this.stateBoolean = true;
         this.orgusname = true;
@@ -136,7 +137,7 @@ export class CheckfacComponent implements OnInit {
       type:"campus",
       parent:this.managerservice.parserString(state)
     };
-    this.managerservice.getStates('conalep',query1).subscribe(data=>{
+    this.managerservice.getStates(environment.instanceName,query1).subscribe(data=>{
       this.orgUs = data.message.ous;
       this.stateBoolean = true;
     },error=>{
@@ -150,9 +151,9 @@ export class CheckfacComponent implements OnInit {
   public getStatesOU(){
     let query1={
         type:"state",
-        parent:"conalep"
+        parent:environment.instanceName
       };
-    this.managerservice.getStates('conalep', query1).subscribe(data=>{
+    this.managerservice.getStates(environment.instanceName, query1).subscribe(data=>{
       let objr = data.message;
       this.statesOU = objr.ous;
       },error=>{

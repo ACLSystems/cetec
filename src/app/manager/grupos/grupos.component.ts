@@ -3,6 +3,7 @@ import { UserService } from './../../shared/sharedservices/user.service';
 import { ManagerserviceService } from './../managerservice.service';
 import { Router } from '@angular/router';
 import { NgbModule, NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-grupos',
@@ -28,6 +29,7 @@ export class GruposComponent implements OnInit {
   closemodal:NgbModalRef;
   invoiceNumber:any;
   emailcurrent:any;
+	color:string;
 
 
   constructor(private router:Router, private modalService:NgbModal, private userservice:UserService, private managerService:ManagerserviceService) {
@@ -36,6 +38,7 @@ export class GruposComponent implements OnInit {
 
   ngOnInit() {
     this.identity = this.userservice.getidentity();
+		this.color = environment.color;
     this.getRequests();
     this.getgroups();
   }

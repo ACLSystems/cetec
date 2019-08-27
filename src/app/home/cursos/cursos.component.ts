@@ -28,11 +28,15 @@ export class CursosComponent implements OnInit {
 	public instanceName:string;
 	public instanceTitle:string;
 	public instanceNameCase:string;
+	public logo:string;
+	public color:string;
 
   constructor(private homeService:HomeService, private _router:Router) {
     this.org = environment.instanceName;
 		this.instanceTitle = environment.instanceTitle;
 		this.instanceNameCase = environment.instanceName.toUpperCase();
+		this.logo = environment.logo;
+		this.color = environment.color;
     this.ar = new Areas('');
     this.getAreas();
     this.verGrados();

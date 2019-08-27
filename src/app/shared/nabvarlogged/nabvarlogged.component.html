@@ -1,8 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <a class="navbar-brand" [routerLink]="['consoleuser']">
-    <img src="/assets/img/superatemexico.jpg" width="100" alt="">
+    <img src="{{logo}}" width="100" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent"
+		aria-expanded="false"
+		aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -150,21 +156,21 @@
     </ul>
     <hr>
     <form class="form-inline my-2 my-lg-0">
-      <a *ngIf="notifications == 0" class="nav-link text-success"><i class="far fa-bell"></i></a>
+      <a *ngIf="notifications == 0" class="nav-link text-{{color}}"><i class="far fa-bell"></i></a>
       <div *ngIf="notifications != 0" ngbDropdown placement="bottom-right" class="d-inline-block">
-        <a class="nav-link text-success" ngbDropdownToggle><i class="far fa-bell"></i><b class="text-danger" style="font-size:12px">{{notifications}}</b></a>
+        <a class="nav-link text-{{color}}" ngbDropdownToggle><i class="far fa-bell"></i><b class="text-danger" style="font-size:12px">{{notifications}}</b></a>
         <div ngbDropdownMenu aria-labelledby="userOptions">
 
           <div *ngFor="let item of messagesNotifications">
             <div *ngIf="item.sourceRole == 'instructor'">
               <button class="dropdown-item" (click)="getviewnotification(item.objects, item.sourceRole, item.notificationid, item.destination.item._id, item.sourceType)">
-                <span class="text-success"><i class="fas fa-chalkboard-teacher"></i> <b>{{item.source.item.person.name}} {{item.source.item.person.fatherName}} {{item.source.item.person.motherName}}</b></span>
+                <span class="text-{{color}}"><i class="fas fa-chalkboard-teacher"></i> <b>{{item.source.item.person.name}} {{item.source.item.person.fatherName}} {{item.source.item.person.motherName}}</b></span>
                 <p class="font-italic">{{item.message | slice:0:50}}</p>
               </button>
             </div>
             <div *ngIf="item.sourceRole == 'user' && item.sourceType == 'user'">
               <button class="dropdown-item" (click)="getviewnotification(item.objects, item.sourceRole, item.notificationid, item.destination.item._id, item.sourceType)">
-                <span class="text-success"><i class="fas fa-user-circle"></i> <b>{{item.source.item.person.name}} {{item.source.item.person.fatherName}} {{item.source.item.person.motherName}}</b></span>
+                <span class="text-{{color}}"><i class="fas fa-user-circle"></i> <b>{{item.source.item.person.name}} {{item.source.item.person.fatherName}} {{item.source.item.person.motherName}}</b></span>
                 <p class="font-italic">{{item.message | slice:0:50}}</p>
               </button>
             </div>
@@ -179,10 +185,10 @@
         </div>
       </div>
       <div ngbDropdown placement="bottom-right" class="d-inline-block">
-        <button class="btn btn-outline-success" id="userOptions" ngbDropdownToggle><i class="fas fa-user-circle"></i> {{identity.person.name}}</button>
+        <button class="btn btn-outline-{{color}}" id="userOptions" ngbDropdownToggle><i class="fas fa-user-circle"></i> {{identity.person.name}}</button>
         <div ngbDropdownMenu aria-labelledby="userOptions">
-          <button class="dropdown-item text-success" [routerLink]="['/user/userprofile']" ><i class="fas fa-user-alt"></i> Mi perfil</button>
-					<button class="dropdown-item text-success" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesion</button>
+          <button class="dropdown-item text-{{color}}" [routerLink]="['/user/userprofile']" ><i class="fas fa-user-alt"></i> Mi perfil</button>
+					<button class="dropdown-item text-{{color}}" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesion</button>
         </div>
       </div>
     </form>

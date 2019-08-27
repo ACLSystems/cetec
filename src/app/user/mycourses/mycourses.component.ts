@@ -23,6 +23,7 @@ import { Options } from 'fullcalendar';
 import { Reply } from './../../models/course/reply';
 import { ServiceisorgService } from './../../shared/sharedservices/serviceisorg.service';
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-mycourses',
@@ -125,6 +126,7 @@ export class MycoursesComponent implements OnInit, DoCheck {
 	dateCertificate: any;
 	approvalCertificate: boolean;
 	startCertificateDate: any;
+	color: string;
 
 
   /*
@@ -161,6 +163,7 @@ export class MycoursesComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.identity = this.userService.getidentity();
     this.token = this.userService.getToken();
+		this.color = environment.color;
     this.informationCourse(this.courseid);
     this.getMyGrades();
     this.getDiscussionCourse();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceisorgService } from '../../shared/sharedservices/serviceisorg.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -13,12 +14,14 @@ export class UserComponent implements OnInit {
 	loadingData: boolean;
 	messageError: string;
 	isFindOk:boolean;
+	color:string;
 
 	constructor(private serviceorg:ServiceisorgService) {}
 
 	ngOnInit() {
 		this.loading = false;
 		this.messageError = 'Coloca una dirección de correo para iniciar la búsqueda';
+		this.color = environment.color;
 	}
 
 	searchUser(wordcode:string){

@@ -7,6 +7,7 @@ import { EventService } from './../event.service';
 import { Options } from 'fullcalendar';
 import { Router } from '@angular/router';
 import { UserService } from './../../shared/sharedservices/user.service';
+import { environment } from './../../../environments/environment';
 
 
 
@@ -22,7 +23,7 @@ export class ScheduleComponent implements OnInit {
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   data: any[] = [];
-  colorevents: any[] = ['#088A4B', '#04B45F', '#04B45F', '#E6E6E6'];
+  colorevents: any[] = environment.colorEvents;
 
   constructor(private userService: UserService, private datePipe: DatePipe, private eventService: EventService, private router: Router) {
 		this.token = this.userService.getToken();
@@ -47,8 +48,8 @@ export class ScheduleComponent implements OnInit {
           start: this.datePipe.transform(id.beginDate, 'yyyy-MM-dd'),
           end: this.datePipe.transform(id.endDate, 'yyyy-MM-dd'),
           //color: this.colorevents[Math.floor(Math.random() * this.colorevents.length)],
-					color: '#088A4B',
-					textColor: '#FFFFFF'
+					color: environment.eventColor,
+					textColor: environment.textColor
         });
       }
       this.calendarOptions = {
