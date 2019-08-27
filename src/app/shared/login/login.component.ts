@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   messageErroremail: string;
   login: Login;
   token: any;
+	tokenVersion: string;
   identity: any;
   show = false;
 
@@ -30,6 +31,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.token = this.userService.getToken();
     this.identity = this.userService.getidentity();
+		this.tokenVersion = this.userService.getTokenVersion();
+		if(!this.tokenVersion) {
+			localStorage.removeItem('identity');
+			localStorage.removeItem('token');
+			localStorage.removeItem('tokenVersion');
+			localStorage.clear();
+		}
   }
 
   getCredentials(){
@@ -53,6 +61,7 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(this.login).subscribe(data => {
       this.token = data.token;
       localStorage.setItem('token', this.token);
+			localStorage.setItem('tokenVersion', '2');
 			let decodedToken = this.getDecodedAccessToken(this.token);
 			localStorage.setItem('identity', JSON.stringify({
 				admin: decodedToken.admin,

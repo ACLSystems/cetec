@@ -14,6 +14,7 @@ export class UserService{
   public url: string;
   public identity: any;
   public token: any;
+	public tokenVersion: string;
   public roles: any;
 
 
@@ -76,6 +77,19 @@ export class UserService{
       this.token = null;
     }
     return this.token;
+  }
+
+	/*
+  metodo para poner el token del usuario logueado donde el api lo requiera
+  */
+  getTokenVersion() {
+    const tokenVersion = localStorage.getItem('tokenVersion');
+    if (tokenVersion !== 'undefined') {
+      this.tokenVersion = this.tokenVersion;
+    } else {
+      this.tokenVersion = null;
+    }
+    return this.tokenVersion;
   }
 
   /*
