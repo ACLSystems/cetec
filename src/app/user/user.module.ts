@@ -18,7 +18,7 @@ import { UserroutingModule } from './user.routes';
 import { VideosPipe } from './userservices/videos.pipe';
 import { ViewNotificationsBlocksComponent } from './view-notifications-blocks/view-notifications-blocks.component';
 import { ViewNotificationsComponent } from './view-notifications/view-notifications.component';
-
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -28,7 +28,8 @@ import { ViewNotificationsComponent } from './view-notifications/view-notificati
     NgbModule,
     NgxPaginationModule,
     FullCalendarModule,
-    ArchwizardModule
+    ArchwizardModule,
+		QRCodeModule
   ],
   declarations: [
     BlocksComponent,

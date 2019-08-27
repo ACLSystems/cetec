@@ -184,7 +184,10 @@
                   <span *ngIf="data.status=='pending'" class="text-info font-italic"><i class="fas fa-exclamation-circle"></i> Pago pendiente</span>
 
                   <div *ngIf="data.pass && data.certificateNumber != null && data.status!='pending'">
-                    <a href='https://goo.gl/forms/ysPqeLpN4yIJPmeZ2' target="_blank" type="button" class="btn btn-info blockquote" style="margin-top:15px;" (click)="shownewDoubt(infoconst)"><i class="fas fa-certificate"></i> Imprimir constancia</a>
+                    <a
+											href='https://goo.gl/forms/ysPqeLpN4yIJPmeZ2'
+											target="_blank"
+											type="button" class="btn btn-info blockquote" style="margin-top:15px;" (click)="shownewDoubt(infoconst)"><i class="fas fa-certificate"></i> Imprimir constancia</a>
                   </div>
                 </div>
               </div>

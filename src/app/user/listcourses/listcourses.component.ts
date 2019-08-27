@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+
 import { UserService } from './../../shared/sharedservices/user.service';
-import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-listcourses',
@@ -10,7 +10,7 @@ import { environment } from './../../../environments/environment';
 })
 export class ListcoursesComponent implements OnInit, DoCheck {
 
-  public identiti;
+  public identity;
   public token;
 
   public rolOrg : boolean;
@@ -19,13 +19,12 @@ export class ListcoursesComponent implements OnInit, DoCheck {
   public rolAdmin : boolean;
   public rolAutho : boolean;
   public rolInstructor : boolean;
-	public instanceTitle: string;
 
   /*
   Constructor de la clase
   */
   constructor(private _router:Router, private _activeRouter:ActivatedRoute, private _user:UserService) {
-    this.identiti = this._user.getIdentiti();
+    this.identity = this._user.getidentity();
     this.token = this._user.getToken();
   }
 
@@ -33,8 +32,7 @@ export class ListcoursesComponent implements OnInit, DoCheck {
   función de arranque del componente
   */
   ngOnInit() {
-		this.instanceTitle = environment.instanceTitle;
-    this.identiti = this._user.getIdentiti();
+    this.identity = this._user.getidentity();
     this._user.getRoles().subscribe(data=>{
       this.rolSup = data.message.isSupervisor;
       this.rolUser = data.message.isUser;
@@ -51,7 +49,7 @@ export class ListcoursesComponent implements OnInit, DoCheck {
   función de cambios en el componente
   */
   ngDoCheck(){
-    this.identiti = this._user.getIdentiti();
+    this.identity = this._user.getidentity();
     //this.getReports();
   }
 }

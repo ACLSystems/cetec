@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:3050/',
+  url: 'https://apiadmincetec.sloppy.zone/',
   urlLibreta: 'http://localhost:4200/',
   idTutor: '5ab47313007ce400a8ef4248',
 	versionCheckURL: 'version.json',
 	instanceName: 'cetec',
 	instanceTitle: 'CETEC',
 	siteName: 'cetec.superatemexico.com',
-	footer:'Dirección de Servicios Tecnológicos y de Capacitación Conalep'
+	footer:'CETEC',
+	captchaSiteKey: '6LdAzbMUAAAAACI4-83Cak-Q3B_RYQnrVFPLsFcA'
 };
 
 /*

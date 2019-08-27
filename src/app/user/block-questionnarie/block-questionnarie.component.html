@@ -12,10 +12,10 @@
 
 <div *ngFor="let item of block.data.questionnarie.questions;let idQ = index">
   <div *ngIf="item.label">
-    <span class="text-info" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.label}} {{item.help}} </span>
+    <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> {{item.label}} {{item.help}} </span>
   </div>
   <div *ngIf="!item.label">
-    <span class="text-info" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> Pregunta {{idQ+1}} {{item.help}}</span>
+    <span class="text-success" style="margin-bottom:15px;"><i class="fas fa-info-circle"></i> Pregunta {{idQ+1}} {{item.help}}</span>
   </div>
 
   <!--Para los headers de las preguntas-->
@@ -34,7 +34,7 @@
 
   <!--Para las preguntas que tengan pie de pagina-->
   <div *ngIf="item.footer">
-    <span class="text-info text-justify">
+    <span class="text-success text-justify">
       <i class="fas fa-quote-left"></i>
       <p>
         {{item.footer}}
@@ -62,7 +62,7 @@
     <div *ngFor="let itemmap of item.group; let idMap = index">
       <div class="row">
         <div class="col-5">
-          <div class="alert alert-info" role="alert">
+          <div class="alert alert-success" role="alert">
             <div [innerHTML]="itemmap">
 
             </div>
@@ -94,7 +94,7 @@
                 <input type="text" class="form-control" #answer (blur)="getAnswer(item.id, answer.value, item.type, indexopt, idQ)">
               </div>
               <div class="col-6">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-success" role="alert">
                   <div [innerHTML]="itemmap">
 
                   </div>
@@ -104,7 +104,7 @@
             </div>
             <div *ngIf="ordercomp == 1" class="row">
               <div class="col-6">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-success" role="alert">
                   <div [innerHTML]="itemmap">
 
                   </div>
@@ -123,7 +123,7 @@
     <div *ngIf="item.display.length == 0">
       <div class="row" *ngFor="let itemmap of item.group;let idquestion = index;">
         <div class="col-6">
-          <div class="alert alert-info" role="alert">
+          <div class="alert alert-success" role="alert">
             <div [innerHTML]="itemmap">
 
             </div>
@@ -165,7 +165,7 @@
   <!--  -->
 </div>
 
-<button type="button" class="btn btn-info blockquote" [disabled]="!isValidateAttemp" (click)="showAccept(accept)">
+<button type="button" class="btn btn-success blockquote" [disabled]="!isValidateAttemp" (click)="showAccept(accept)">
   <i class="fas fa-check-circle"></i> Validar mis respuestas
 </button>
 <!--  -->
@@ -188,12 +188,12 @@
         <wizard-step>
           <span class="text-justify">
             <h5>
-              <p class="text-info">
+              <p class="text-success">
                 Al envíar las respuestas estaras usando 1 de los {{maxAttempts}} intentos que tienes para realizar la evaluación
               </p>
               <br>
               <div class="alert alert-secondary" role="alert">
-                <i class="fas fa-exclamation-triangle"></i> Has contestado <b class="text-info">{{answerStudent.length}}</b> preguntas de las <b>{{totalQuestions}}</b> preguntas que tiene el cuestinario
+                <i class="fas fa-exclamation-triangle"></i> Has contestado <b class="text-success">{{answerStudent.length}}</b> preguntas de las <b>{{totalQuestions}}</b> preguntas que tiene el cuestinario
               </div>
               <p class="text">
 
@@ -204,11 +204,11 @@
             </h5>
           </span>
 
-          <button type="button" class="btn btn-info" (click)="checkAnswersStudent(block.data.questionnarie.type)" nextStep>
+          <button type="button" class="btn btn-success" (click)="checkAnswersStudent(block.data.questionnarie.type)" nextStep>
             <i class="fas fa-check"></i> Continuar
           </button>
 
-          <button type="button" class="btn btn-info" (click)="closeDialog()">
+          <button type="button" class="btn btn-success" (click)="closeDialog()">
             <i class="fas fa-times"></i> Cancelar
           </button>
         </wizard-step>
@@ -216,17 +216,17 @@
         <wizard-step>
 
           <div *ngIf="block.data.questionnarie.type == 'test'">
-            <div class="text-center text-info">
+            <div class="text-center text-success">
               <h3>Curso: <small>{{block.data.courseCode}}</small></h3>
               <hr>
-              <h4>Nombre completo: {{identiti.person.name}} {{identiti.person.fatherName}} {{identiti.person.motherName}}</h4>
-              <h4>Usuario: {{identiti.name}}</h4>
+              <h4>Nombre completo: {{identity.person.name}} {{identity.person.fatherName}} {{identity.person.motherName}}</h4>
+              <h4>Usuario: {{identity.name}}</h4>
               <hr>
               <h4>Evaluación: {{block.data.blockTitle}}</h4>
             </div>
             <div *ngFor="let item of resultsArrayAnswersAspects" class="row m-2">
               <div class="col-4">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-success" role="alert">
                   <h5>Aspecto: {{item.aspect}}</h5>
                 </div>
               </div>
@@ -238,15 +238,15 @@
             </div>
           </div>
 
-          <div *ngIf="block.data.questionnarie.type != 'test' && grade >= block.data.questionnarie.minimum" class="text-info text-center">
+          <div *ngIf="block.data.questionnarie.type != 'test' && grade >= block.data.questionnarie.minimum" class="text-success text-center">
             <h1>
               <i class="fas fa-quote-left"></i> Puntuación obtenida en esta evaluación
             </h1>
             <br>
             <h3>Curso: <small>{{block.data.courseCode}}</small></h3>
             <hr>
-            <h4>Nombre completo: {{identiti.person.name}} {{identiti.person.fatherName}} {{identiti.person.motherName}}</h4>
-            <h4>Usuario: {{identiti.name}}</h4>
+            <h4>Nombre completo: {{identity.person.name}} {{identity.person.fatherName}} {{identity.person.motherName}}</h4>
+            <h4>Usuario: {{identity.name}}</h4>
             <hr>
             <h4>Evaluación: {{block.data.blockTitle}}</h4>
             <h4>Total de aciertos: {{gradefinal}}</h4>
@@ -259,8 +259,8 @@
             <br>
             <h3>Curso: <small>{{block.data.courseCode}}</small></h3>
             <hr>
-            <h4>Nombre completo: <small>{{identiti.person.name}} {{identiti.person.fatherName}} {{identiti.person.motherName}}</small></h4>
-            <h4>Usuario: <small>{{identiti.name}}</small></h4>
+            <h4>Nombre completo: <small>{{identity.person.name}} {{identity.person.fatherName}} {{identity.person.motherName}}</small></h4>
+            <h4>Usuario: <small>{{identity.name}}</small></h4>
             <br>
             <h4>{{block.data.blockTitle}}</h4>
             <hr>

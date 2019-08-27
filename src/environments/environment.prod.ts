@@ -7,5 +7,6 @@ export const environment = {
 	instanceName: 'cetec',
 	instanceTitle: 'CETEC',
 	siteName: 'cetec.superatemexico.com',
-	footer: 'Dirección de Servicios Tecnológicos y de Capacitación Conalep'
+	footer: 'CETEC',
+	captchaSiteKey: '6LdAzbMUAAAAACI4-83Cak-Q3B_RYQnrVFPLsFcA'
 };

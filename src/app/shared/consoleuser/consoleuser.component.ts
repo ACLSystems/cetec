@@ -16,7 +16,7 @@ declare var $: any;
 })
 export class ConsoleuserComponent implements OnInit {
 
-  identiti: any;
+  identity: any;
   token: any;
   userlms: any;
   sesionExpired = false;
@@ -47,21 +47,17 @@ export class ConsoleuserComponent implements OnInit {
   coursesearch: any[];
   isFindOk: boolean;
   messageNotFound: any;
-	instanceNameCase: string;
-	instanceTitle: string;
 
 
   constructor(private userService: UserService, private course: CourseService, private router: Router) {
     this.token = this.userService.getToken();
-    this.identiti = this.userService.getIdentiti();
-		this.instanceNameCase = environment.instanceName.toUpperCase();
-		this.instanceTitle = environment.instanceTitle;
+    this.identity = this.userService.getidentity();
   }
 
   ngOnInit() {
     this.token = this.userService.getToken();
-    this.identiti = this.userService.getIdentiti();
-		if(this.token === null && this.identiti === null) {
+    this.identity = this.userService.getidentity();
+		if(this.token === null && this.identity === null) {
 			this.router.navigate(['/home']);
 		} else {
 	    this.getRolesUser();
@@ -106,7 +102,7 @@ export class ConsoleuserComponent implements OnInit {
   funcion para el cierre de sesion del usuario
   */
   logoutExpired() {
-    localStorage.removeItem('identiti');
+    localStorage.removeItem('identity');
     localStorage.removeItem('token');
     localStorage.clear();
     this.router.navigate(['/login']);
@@ -117,7 +113,7 @@ export class ConsoleuserComponent implements OnInit {
   */
   public getDetailsUser() {
     this.loading = true;
-    const name = this.identiti.name;
+    const name = this.identity.name;
 		this.userService.getUser(name).subscribe(data => {
 			this.userlms = data;
       this.loading = false;
@@ -143,7 +139,7 @@ export class ConsoleuserComponent implements OnInit {
   funcion para la confirmacion de usuario y contraseña
   */
   public sendData() {
-    const name = this.identiti.name;
+    const name = this.identity.name;
     this.loading = true;
     this.person = new Person(this.name, this.fathername, this.mothername);
     this.uservalidate = new UserValidate(name, this.person);

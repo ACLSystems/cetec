@@ -12,7 +12,7 @@
 </div>
 
 <div *ngIf="!loading" class="container">
-  <div *ngIf="identiti">
+  <div *ngIf="identity">
     <h2 class="text-center"><i class="fas fa-graduation-cap"></i> Mis cursos</h2>
     <hr>
     <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
@@ -42,7 +42,7 @@
 									<div class="container">
 										<div class="row"><h6 class="card-title">{{crs.curso.course}} ({{crs.curso.courseCode}})</h6></div>
 										<small class="text-justify">
-										<div class="row"><span class="card-subtitle text-info"><i class="fas fa-users"></i> {{crs.curso.name}} ({{crs.curso.code}})</span></div>
+										<div class="row"><span class="card-subtitle text-success"><i class="fas fa-users"></i> {{crs.curso.name}} ({{crs.curso.code}})</span></div>
 										<div class="row"><span class="card-text"><i class="fas fa-user-tie"></i> {{crs.curso.instructor}}</span></div></small>
 									</div>
 									<!-- <table class="table table-sm">
@@ -69,7 +69,7 @@
 									</table> -->
                 </div>
                 <div class="card-footer">
-                  <button type="button" class="btn btn-info blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
+                  <button type="button" class="btn btn-success blockquote" (click)="getMycourse(crs.curso.course, crs.curso.groupid, crs.curso.courseid, crs.curso.lastSeenBlock, crs.curso.firstBlock)">
                     <i class="far fa-arrow-alt-circle-right"></i> Ir a mi curso
                   </button>
                 </div>

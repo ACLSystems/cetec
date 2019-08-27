@@ -9,7 +9,7 @@ import { DatePipe, DecimalPipe} from '@angular/common';
 //import * as jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
 import { GeneratedocsService } from './../../user/mycourses/generatedocs.service';
-import { constancias } from './../../user/models/docsconalep';
+import { constancias } from './../../user/models/docscetec';
 
 //type AOA = any[][];
 

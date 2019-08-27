@@ -13,7 +13,6 @@ export class CourseService {
   public token: any;
   public resultQueryCours: any[];
   public idRQ: string;
-	public org: string;
 
   youtubeUrl = 'https://www.googleapis.com/youtube/v3';
   apikey = 'AIzaSyD0yRdoVfZWhISHwYu1j758Phg6jZggvrQ';
@@ -21,7 +20,6 @@ export class CourseService {
   constructor(public http: HttpClient, private user: UserService) {
     this.url = environment.url;
     this.token = this.user.getToken();
-		this.org = environment.instanceName;
   }
 
   /*
@@ -56,7 +54,8 @@ export class CourseService {
   */
   getResources(groupid:any, token:any):Observable<any>{
     let headers = new HttpHeaders({
-      'x-access-token': token
+      //'x-access-token': token
+			'Authorization': 'Bearer ' + token
     });
 
     return this.http.get(this.url + 'api/v1/user/getresource?groupid=' + groupid);
@@ -67,7 +66,8 @@ export class CourseService {
   */
   getReplysBlock(blockid):Observable<any>{
     let headers = new HttpHeaders({
-      'x-access-token':this.token
+      //'x-access-token':this.token
+			'Authorization': 'Bearer ' + this.token
     });
     return this.http.get(this.url+'api/v1/user/comment/get?query={"pubtype":"discussion","type":"reply","block":"'+blockid+'"}&order=1&skip=0&limit=500');
   }
@@ -77,7 +77,8 @@ export class CourseService {
   */
   getReplysCourses(courseid:any,groupid:any):Observable<any>{
     let headers = new HttpHeaders({
-      'x-access-token':this.token
+      //'x-access-token':this.token
+			'Authorization': 'Bearer ' + this.token
     });
     return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","pubtype":"discussion","type":"reply"}&order=1&skip=0&limit=500');
   }
@@ -164,7 +165,7 @@ export class CourseService {
   }
 
   getCoursesOrg():Observable<any>{
-    return this.http.get(this.url+'api/course/list?org=' + this.org);
+    return this.http.get(this.url+'api/course/list?org=conalep');
   }
 
   showBlocks(id:any):Observable<any>{

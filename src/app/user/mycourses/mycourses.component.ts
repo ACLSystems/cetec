@@ -9,7 +9,7 @@ import {
   OnInit,
   ViewChild
   } from '@angular/core';
-import { constancias } from './../models/docsconalep';
+import { constancias } from './../models/docscetec';
 import { CourseService } from './../../shared/sharedservices/course.service';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Discussion } from './../../models/course/discussion';
@@ -31,7 +31,7 @@ import { UserService } from './../../shared/sharedservices/user.service';
 })
 export class MycoursesComponent implements OnInit, DoCheck {
 
-  public identiti: any;
+  public identity: any;
   public token: any;
 
   calendarOptions: Options;
@@ -126,6 +126,7 @@ export class MycoursesComponent implements OnInit, DoCheck {
 	approvalCertificate: boolean;
 	startCertificateDate: any;
 
+
   /*
   constructor de la clase
   */
@@ -158,7 +159,7 @@ export class MycoursesComponent implements OnInit, DoCheck {
   Metodo init de la clase
   */
   ngOnInit() {
-    this.identiti = this.userService.getIdentiti();
+    this.identity = this.userService.getidentity();
     this.token = this.userService.getToken();
     this.informationCourse(this.courseid);
     this.getMyGrades();
@@ -231,7 +232,7 @@ export class MycoursesComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    this.identiti = this.userService.getIdentiti();
+    this.identity = this.userService.getidentity();
     this.token = this.userService.getToken();
   }
 
@@ -330,8 +331,8 @@ export class MycoursesComponent implements OnInit, DoCheck {
 
       this.nameStudent = res.name;
       this.date = res.passDate;
-      this.duration = res.duration;
-      this.durationUnit = res.durationUnits;
+      this.duration = res.courseDuration;
+      this.durationUnit = res.courseDurUnits;
       this.course = res.course;
       this.endDate = new Date(res.endDate);
       this.beginDate = new Date(res.beginDate);
@@ -408,8 +409,8 @@ export class MycoursesComponent implements OnInit, DoCheck {
         this.data.name,
         this.data.course,
         this.data.finalGrade,
-        this.data.duration,
-        this.data.durationUnits,
+        this.data.courseDuration,
+        this.data.courseDurUnits,
         this.data.passDateSpa,
 				null
       );
@@ -419,8 +420,8 @@ export class MycoursesComponent implements OnInit, DoCheck {
         this.data.certificateNumber,
         this.data.name,
         this.data.course,
-        this.data.duration,
-        this.data.durationUnits,
+        this.data.courseDuration,
+        this.data.courseDurUnits,
         this.data.passDateSpa,
 				null
       );

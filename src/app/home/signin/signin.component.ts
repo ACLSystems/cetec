@@ -11,7 +11,7 @@ import { Student } from './../../models/student/student';
 import { StudentExternal } from './../../models/student/studentExternal';
 import { Userlms } from './../../models/userlms/userlms';
 import { UserTemp } from './../../models/temp/usertemp';
-import { environment } from './../../../environments/environment';
+
 
 
 @Component({
@@ -42,7 +42,7 @@ export class SigninComponent implements OnInit, DoCheck {
   public messaerrstd: string;
   public usertype: string;
   public userorig: string;
-  public identiti: any;
+  public identity: any;
 
   public carrerasList: any[] = [];
   public areadata: any[] = [];
@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit, DoCheck {
   public query1: any;
 
   constructor(private signinService: SigninService, private homeService: HomeService, private route: Router) {
-    this.org = environment.instanceName;
+    this.org = 'conalep';
     this.person = new Person('', '', '', '', new Date());
     this.student = new Student('', '', '');
     this.studentE = new StudentExternal('', '', '');
@@ -77,7 +77,7 @@ export class SigninComponent implements OnInit, DoCheck {
   */
   public onSubmit(username: any, password: any) {
 
-    this.usertemp.org = this.org;
+    this.usertemp.org = 'conalep';
     this.person.email  = username;
 
     if (this.student.type === 'internal') {
@@ -91,11 +91,11 @@ export class SigninComponent implements OnInit, DoCheck {
 
     this.signinService.registerUser(this.userlms).subscribe( () => {
       this.login = new Login (username, password);
-      this.signinService.singUp(this.login).subscribe(data => {
+      this.signinService.signIn(this.login).subscribe(data => {
         localStorage.setItem('token', data.token);
         this.signinService.getUser(this.login.username).subscribe(res => {
-          const identiti = res;
-          localStorage.setItem('identiti', JSON.stringify(identiti));
+          const identity = res;
+          localStorage.setItem('identity', JSON.stringify(identity));
           this.route.navigate(['/consoleuser']);
         });
       });
@@ -103,12 +103,12 @@ export class SigninComponent implements OnInit, DoCheck {
   }
 
   /*
-  Metodo para obtener el listado de los estados
+  Metodo para obtener el listado de los estados por parte del conalep
   */
   public getOrgUnits() {
     this.query1 = {
         type: 'state',
-        parent: this.org
+        parent: 'conalep'
       };
     this.signinService.getStates(this.org, this.query1).subscribe( data => {
       const objr = data.message;

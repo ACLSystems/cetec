@@ -18,6 +18,8 @@ import { RecoverpasswordComponent } from './../shared/recoverpassword/recoverpas
 import { SigninComponent } from './signin/signin.component';
 import { ConstanciasComponent } from './constancias/constancias.component';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
+import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     NgxPaginationModule,
     NgbModule,
     FormsModule,
-    ArchwizardModule
+    ArchwizardModule,
+		RecaptchaModule.forRoot()
   ],
   declarations: [
     CursosComponent,
@@ -40,10 +43,15 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     QuotationComponent,
     CourseshopComponent,
     ConstanciasComponent,
-		TimeAgoPipe
+		TimeAgoPipe,
+		OfflineComponent
   ],
   providers: [
-    HomeService
+    HomeService,
+		{
+			provide: RECAPTCHA_LANGUAGE,
+			useValue: 'es-419'
+		}
   ]
 })
 export class HomeModule { }
