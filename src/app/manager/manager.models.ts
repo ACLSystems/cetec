@@ -65,7 +65,9 @@ export class usermuir{
     public char1:any,
     public char2:any,
     public student:studentmuir,
-    public corporate:corporate
+    public corporate:corporate,
+		public project?:string,
+		public workShift?:string
   ){}
 }
 
@@ -77,7 +79,9 @@ export class userexternalmuir{
     public orgUnit:any,
     public char1:any,
     public char2:any,
-    public student:studentexternalmuir
+    public student:studentexternalmuir,
+		public project?:string,
+		public workShift?:string
   ){}
 }
 

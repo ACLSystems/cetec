@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   url: 'https://apiadmincetec.sloppy.zone/',
   urlLibreta: 'http://localhost:4200/',
-  idTutor: '5ab47313007ce400a8ef4248',
+  idTutor: '5d448736c65eff0019726949',
 	versionCheckURL: 'version.json',
 	instanceName: 'cetec',
 	instanceTitle: 'CETEC',

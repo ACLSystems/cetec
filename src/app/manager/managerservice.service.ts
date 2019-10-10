@@ -226,4 +226,12 @@ export class ManagerserviceService {
     this.datosOkrfc = this.rfcRegex.test(rfc);
     return this.datosOkrfc;
   }
+
+	/*
+	Obtener proyectos
+	*/
+
+	public getProjects() {
+		return this.http.get(this.url+"api/v1/supervisor/projects");
+	}
 }

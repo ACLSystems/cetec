@@ -23,10 +23,10 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-3 text-center">
+    <div class="col-4 text-center">
       <i class="fas fa-sort-numeric-up"></i> <b>Número de solicitud: </b><span [ngClass]="{'text-warning': request.status=='init', 'text-danger':request.status=='cancelled', 'text-success':request.status=='payment'}"> {{request.reqNumber}}</span>
     </div>
-    <div class="col-3 text-center">
+    <div class="col-4 text-center">
       <i class="fas fa-thermometer-three-quarters"></i> <b>Estatus de la solicitud: </b>
       <span [ngClass]="{'text-warning': request.status=='init', 'text-danger':request.status=='cancelled', 'text-success':request.status=='payment'}">
         <span *ngIf="request.status=='init'">  Pendiente</span>
@@ -34,7 +34,7 @@
         <span *ngIf="request.status=='payment'">  Terminada</span>
       </span>
     </div>
-    <div class="col-3 text-center">
+    <!-- <div class="col-3 text-center">
       <i class="fas fa-hand-holding-usd"></i> <b>Estatus del pago: </b>
       <span [ngClass]="{'text-warning':request.paymentStatus=='pending', 'text-info':request.paymentStatus=='partial', 'text-success':request.paymentStatus=='complete', 'text-success':request.paymentStatus=='granted'}">
         <span *ngIf="request.paymentStatus=='pending'">Pendiente</span>
@@ -42,8 +42,8 @@
         <span *ngIf="request.paymentStatus=='complete'">Completado</span>
         <span *ngIf="request.paymentStatus=='granted'">Completado</span>
       </span>
-    </div>
-    <div class="col-3 text-center">
+    </div> -->
+    <div class="col-4 text-center">
       <i class="fas fa-tag"></i> <b>Palabra clave: </b> <span [ngClass]="{'text-warning': request.status=='init', 'text-danger':request.status=='cancelled', 'text-success':request.status=='payment'}"> {{request.label}} </span>
     </div>
   </div>
@@ -63,9 +63,9 @@
         <th class="text-center">Curso</th>
         <th class="text-center">Total de alumnos</th>
         <th class="text-center">Nombre del grupo</th>
-        <th class="text-center">Precio</th>
+        <!-- <th class="text-center">Precio</th>
         <th class="text-center">Precio sin IVA</th>
-        <th class="text-center">Sub total</th>
+        <th class="text-center">Sub total</th> -->
       </thead>
       <tbody>
         <tr *ngFor="let item of request.details">
@@ -94,7 +94,7 @@
             </div>
           </td>
           <td class="text-center">{{item.item.name}}</td>
-          <td class="text-center">
+          <!-- <td class="text-center">
             {{item.item.course.price | currency:'MXN'}}
           </td>
           <td class="text-center">
@@ -106,9 +106,9 @@
                 {{itemTemp.studentsforgroup.length * item.item.course.cost | currency:'MXN'}}
               </div>
             </div>
-          </td>
+          </td> -->
         </tr>
-        <tr>
+        <!-- <tr>
           <td colspan="7" class="text-center">
           </td>
           <td colspan="2" class="text-center">
@@ -137,7 +137,7 @@
           <td>
             {{total | currency:'MXN'}}
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>

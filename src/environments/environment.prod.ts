@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   url: 'https://apiadmincetec.sloppy.zone/',
   urlLibreta: 'https://cetec.superatemexico.com/',
-  idTutor: '5afade18be6da5001b81e59f',
+  idTutor: '5d448736c65eff0019726949',
 	versionCheckURL: 'version.json',
 	instanceName: 'cetec',
 	instanceTitle: 'CETEC',
