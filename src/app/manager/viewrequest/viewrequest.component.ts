@@ -63,6 +63,7 @@ export class ViewrequestComponent implements OnInit {
     this.managerServices.getRequestFinder(this.numberrequest).subscribe(
       data => {
         this.request = data.request;
+				console.log(data);
         this.invoiceNumber = data.invoiceNumber;
         for (const id of this.request.details) {
           for (const idtemp of this.request.temp1) {

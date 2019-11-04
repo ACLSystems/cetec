@@ -76,7 +76,7 @@ export class AddusersComponent implements OnInit {
 	closemodal: NgbModalRef;
 
 	numberRegex = /^([0-9])*$/;
-	stringRegex = /^([A-Za-z])+$/;
+	stringRegex = /^([A-Za-zÀ-ÿ])+$/;
 	stringRegexBlank = /([A-Za-z])\s([A-Za-z])/;
 	termnRegex = /^Semestre\s([I,II,III,IV,V,VI,VII])/;
 
@@ -151,6 +151,12 @@ export class AddusersComponent implements OnInit {
 		this.typeregister = '';
 		if (type !== '') {
 			this.typeregister = type;
+			if(this.typeregister == 'individual') {
+				this.typestudent = 'internal';
+				this.corptype = 'student';
+				this.datosOktype = true;
+				this.datosOkCorptype = true;
+			}
 		}
 	}
 
@@ -467,16 +473,21 @@ export class AddusersComponent implements OnInit {
 						temp1: tmparray,
 						temp2: tmparray2
 					};
-					this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
-						this.messageSuccess = 'Se agregó el usuario exitosamente';
-						this.userindividual++;
-						this.loadingprocess = false;
-						this.uservalite = false;
-					}, error => {
-						this.loadingprocess = false;
-						this.messageError = 'Ocurrio un error interno de la plataforma: ' + error;
-						this.uservalite = false;
-					});
+					console.log(requestUpdate);
+					// this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
+					// 	this.messageSuccess = 'Se agregó el usuario exitosamente';
+					// 	this.userindividual++;
+					// 	this.loadingprocess = false;
+					// 	this.uservalite = false;
+					// }, error => {
+					// 	this.loadingprocess = false;
+					// 	this.messageError = 'Ocurrio un error interno de la plataforma: ' + error;
+					// 	this.uservalite = false;
+					// });
+					this.messageSuccess = 'TEST';
+					this.userindividual++;
+					this.loadingprocess = false;
+					this.uservalite = false;
 				} else {
 					valuetemp2.students.push(user);
 					tmparray2.splice(indexrepeat2, 1);
@@ -490,16 +501,21 @@ export class AddusersComponent implements OnInit {
 						temp1: tmparray,
 						temp2: tmparray2
 					};
-					this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
-						this.messageSuccess = 'Se agregó el usuario exitosamente';
-						this.userindividual++;
-						this.loadingprocess = false;
-						this.uservalite = false;
-					}, error => {
-						this.loadingprocess = false;
-						this.messageError = 'Ocurrio un error interno de la plataforma: ' + error;
-						this.uservalite = false;
-					});
+					console.log(requestUpdate);
+					// this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
+					// 	this.messageSuccess = 'Se agregó el usuario exitosamente';
+					// 	this.userindividual++;
+					// 	this.loadingprocess = false;
+					// 	this.uservalite = false;
+					// }, error => {
+					// 	this.loadingprocess = false;
+					// 	this.messageError = 'Ocurrio un error interno de la plataforma: ' + error;
+					// 	this.uservalite = false;
+					// });
+					this.messageSuccess = 'TEST';
+					this.userindividual++;
+					this.loadingprocess = false;
+					this.uservalite = false;
 				}
 			}, error => {
 				console.log(error);
@@ -647,7 +663,6 @@ export class AddusersComponent implements OnInit {
 		this.userfind = true;
 		this.personcheck = false;
 		this.managerServices.getUserDetailsByManager(useremail).subscribe(data => {
-			console.log(data.message);
 			if(data.message == 'Error: User -' + useremail + '- does not exist') {
 				console.log(data.message);
 			} else {
@@ -673,7 +688,6 @@ export class AddusersComponent implements OnInit {
 		this.managerServices.getProjects().subscribe((data: any[])=> {
 			if(Array.isArray(data)) {
 				this.projects = data;
-				console.log(data);
 				this.selectedProject = this.projects[0].name;
 			}
 		});

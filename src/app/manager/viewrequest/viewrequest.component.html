@@ -13,7 +13,7 @@
 <div *ngIf="!loading" class="container">
   <div class="row">
     <div class="col-4">
-      <button type="button" class="btn blockquote btn-success" [routerLink]="['/requests']">
+      <button type="button" class="btn blockquote btn-primary" [routerLink]="['/requests']">
         <i class="fas fa-reply"></i> Buscar otra solicitud
       </button>
     </div>
@@ -44,7 +44,7 @@
       </span>
     </div> -->
     <div class="col-4 text-center">
-      <i class="fas fa-tag"></i> <b>Palabra clave: </b> <span [ngClass]="{'text-warning': request.status=='init', 'text-danger':request.status=='cancelled', 'text-success':request.status=='payment'}"> {{request.label}} </span>
+      <i class="fas fa-tag"></i> <b>Descripción: </b> <span [ngClass]="{'text-warning': request.status=='init', 'text-danger':request.status=='cancelled', 'text-success':request.status=='payment'}"> {{request.label}} </span>
     </div>
   </div>
   <hr>
@@ -85,7 +85,7 @@
             </button>
           </td>
           <td class="text-center">{{item.item.code}}</td>
-          <td class="text-center">{{item.item.course.code}}</td>
+          <td class="text-center">{{item.item.course.title}} <b>({{item.item.course.code}})</b></td>
           <td class="text-center">
             <div *ngFor="let itemTemp of request.temp1">
               <div *ngIf="itemTemp.idgroup == item.item._id">
@@ -149,7 +149,7 @@
   <hr>
   <div *ngIf="request.status!='payment' && request.status!='cancelled'" class="row">
     <div class="col-4">
-      <button type="button" class="btn blockquote btn-secondary" (click)="addnewGroup()">
+      <button type="button" class="btn blockquote btn-primary" (click)="addnewGroup()">
         <i class="fas fa-users"></i> Agregar nuevo grupo
       </button>
     </div>

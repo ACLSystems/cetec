@@ -1,29 +1,34 @@
 <div class="container" *ngIf="!loading">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<h3 class="navbar-brand">Carga de usuarios - Solicitud {{numberrequest}}</h3>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<div class="btn-toolbar" role="toolbar">
+				<div class="btn-group mr-2" role="group">
+					<button type="button" class="btn btn-primary float-left" [routerLink]="['/requests']">
+						<i class="fas fa-reply"></i> Regresar
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group">
+					<button type="button" class="btn btn-danger float-right" (click)="showModal(cancelRequest)">
+						<i class="fas fa-trash-alt"></i> Cancelar solicitud
+					</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+
 	<div class="row">
-		<div class="col-4">
-			<button type="button" class="btn btn-success blockquote" [routerLink]="['/requests/viewrequest',numberrequest]">
-				<i class="fas fa-undo"></i> Regresar
-			</button>
+		<div class="col">
+			<b>Descripción:</b> <span class="text-success"> {{labelrequest}}</span> <b></b>
 		</div>
-		<div class="col-4">
-			<button type="button" class="btn btn-danger" (click)="showModal(cancelRequest)">
-				<i class="fas fa-trash-alt"></i> Cancelar solicitud
-			</button>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-3">
-			<b>Número de solicitud:</b> <span class="text-success"> {{numberrequest}}</span>
-		</div>
-		<div class="col-3">
-			<b>Palabra clave:</b> <span class="text-success"> {{labelrequest}}</span> <b></b>
-		</div>
-		<div class="col-3">
+		<div class="col">
 			<b>Curso:</b> <span class="text-success"> {{course.item.course.title}}</span>
 		</div>
-		<div class="col-3">
-			<b>Clave del grupo</b>  <span class="text-success"> {{codegroup}}</span>
+		<div class="col">
+			<b>Clave de grupo</b>  <span class="text-success"> {{codegroup}}</span>
 		</div>
 	</div>
 	<hr>
@@ -249,24 +254,21 @@
 								<div class="col-4">
 									<label for="">*Tipo de usuario: </label>
 									<select #type class="form-control" (change)="validatetypestudent(type.value)">
-										<option value="">opciones</option>
-										<option value="internal">Interno</option>
+										<option value="internal" selected>Interno</option>
 										<option value="external">Externo</option>
 									</select>
-									<small *ngIf="!datosOktype" class="text-danger"><b>*Paso5 Seleccione el tipo de usuario</b></small>
+									<small *ngIf="!datosOktype" class="text-danger"><b>*Paso5 Selecciona el tipo de usuario</b></small>
 								</div>
 								<div class="col-4">
-									<label for="">*Seleccione una opción</label>
+									<label for="" *ngIf="typestudent=='internal' || typestudent=='external'">*Selecciona una opción</label>
 									<select *ngIf="typestudent=='internal'" #corptype class="form-control" (change)="validatecorptypestudent(corptype.value)">
-										<option value="">opciones</option>
-										<option value="student">Estudiante</option>
+										<option value="student" selected>Estudiante</option>
 										<option value="teacher">Docente</option>
 										<option value="administrative">Administrativo</option>
 									</select>
 									<select *ngIf="typestudent=='external'" #corptype class="form-control" (change)="validatecorptypestudent(corptype.value)">
-										<option value="">opciones</option>
 										<option value="private">Privado</option>
-										<option value="public">Publico</option>
+										<option value="public" selected>Publico</option>
 										<option value="particular">Particular</option>
 									</select>
 									<small *ngIf="!datosOkCorptype" class="text-danger"><b>*Seleccione una opción</b></small>
