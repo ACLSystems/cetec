@@ -122,7 +122,8 @@ export class ConsolereportsComponent implements OnInit {
 				if(!this.projectid) {
 					this.projectid = data[0]._id;
 				}
-				//console.log(this.projectid)
+				console.log(this.projects)
+				console.log(this.projectid)
 			}
 			this.loading = false;
 			let project = this.projectid || null;
@@ -140,45 +141,56 @@ export class ConsolereportsComponent implements OnInit {
 		});
 	}
 
+	setOrgTree(data:any) {
+		this.orgTree = data.tree;
+		this.displayEvals = data.displayEvals || false;
+		//console.log(this.displayEvals);
+		//console.log('orgTree')
+		//console.log(this.orgTree);
+		var query = '';
+		this.level = this.orgTree.ouLevel;
+		if(this.level === 3) {
+			//console.log('Somos nivel 3');
+			if(this.orgTree.groups && Array.isArray(this.orgTree.groups) && this.orgTree.groups.length > 0) {
+				this.orgTree.groups.forEach((group: any) => {
+					group.totalUsers = group.totalUsers || 0;
+					group.usersOnTrack = group.usersOnTrack || 0;
+					group.usersPassed = group.usersPassed || 0;
+				});
+			}
+			query  = this.orgTree.ouId;
+			if(this.projectid){
+				query += '&project=' + this.projectid;
+			}
+		} else if(this.level  === 2) {
+			// console.log('Somos nivel 2')
+			// Sacamos el options del nivel 2
+			if(this.orgTree.ous && Array.isArray(this.orgTree.ous) && this.orgTree.groups.length > 0) {
+				this.optionsLevel2 = Array.from(this.orgTree.ous);
+			}
+			query = this.orgTree.query[0];
+			if(this.projectid){
+				query += '&project=' + this.projectid;
+			}
+		}else if(this.level  === 1) {
+			console.log('Somos nivel 1')
+		}
+		//console.log(query);
+		this.getPercentil(query);
+	}
+
 	getOrgTree(project: any) {
 		this.orgservice.getOrgTree(project).subscribe(data=>{
-			//console.log(data)
-			this.orgTree = data.tree;
-			this.displayEvals = data.displayEvals || false;
-			//console.log(this.displayEvals);
-			//console.log('orgTree')
-			//console.log(this.orgTree);
-			var query = '';
-			this.level = this.orgTree.ouLevel;
-			if(this.level === 3) {
-				//console.log('Somos nivel 3');
-				if(this.orgTree.groups && Array.isArray(this.orgTree.groups) && this.orgTree.groups.length > 0) {
-					this.orgTree.groups.forEach((group: any) => {
-						group.totalUsers = group.totalUsers || 0;
-						group.usersOnTrack = group.usersOnTrack || 0;
-						group.usersPassed = group.usersPassed || 0;
-					});
-				}
-				query  = this.orgTree.ouId;
-				if(this.projectid){
-					query += '&project=' + this.projectid;
-				}
-			} else if(this.level  === 2) {
-				// console.log('Somos nivel 2')
-				// Sacamos el options del nivel 2
-				if(this.orgTree.ous && Array.isArray(this.orgTree.ous) && this.orgTree.groups.length > 0) {
-					this.optionsLevel2 = Array.from(this.orgTree.ous);
-				}
-				query = this.orgTree.query[0];
-				if(this.projectid){
-					query += '&project=' + this.projectid;
-				}
-			}else if(this.level  === 1) {
-				console.log('Somos nivel 1')
+			let results = [];
+			if(data.tree && Array.isArray(data.tree) && data.tree.length === 0) {
+				console.log('No encontramos grupos - Reintentando')
+				this.orgservice.getOrgTree().subscribe(data => {
+					console.log(data);
+					this.setOrgTree(data);
+				});
+			} else {
+				this.setOrgTree(data);
 			}
-
-			//console.log(query);
-			this.getPercentil(query);
 		},error=>{
 			console.log(error);
 			this.loading = false;
@@ -191,17 +203,17 @@ export class ConsolereportsComponent implements OnInit {
 			this.courses = [];
 			this.percentil = data;
 			// console.log('Percentil')
-			//console.log(this.percentil);
+			// console.log(this.percentil);
 			this.progressTrack = this.percentil.usersOnTrack / this.percentil.totalUsers * 100;
 			this.progressUnTrack = (this.percentil.totalUsers - this.percentil.usersOnTrack) / this.percentil.totalUsers * 100;
 			this.progressPass = this.percentil.usersPassed / this.percentil.totalUsers * 100;
 			var results = this.percentil.results;
-			// console.log(this.progressTrack)
-			// console.log(this.progressUnTrack)
-			// console.log(this.progressPass)
-			// console.log('Percentil results')
-			// console.log(results);
-			// console.log(this.level)
+			console.log(this.progressTrack)
+			console.log(this.progressUnTrack)
+			console.log(this.progressPass)
+			console.log('Percentil results')
+			console.log(results);
+			console.log(this.level)
 			if(Array.isArray(results) && results.length > 0) {
 				if(this.level === 3) { // si estamos en nivel 3
 					//console.log('Somos percentil nivel 3')
@@ -239,7 +251,7 @@ export class ConsolereportsComponent implements OnInit {
 					//console.log('Somos percentil nivel 2')
 
 				} else if(this.level ===1){ // si estamos en nivel 1
-					//console.log('Somos percentil nivel 1')
+				// 	//console.log('Somos percentil nivel 1')
 
 				}
 				if(this.displayEvals) {

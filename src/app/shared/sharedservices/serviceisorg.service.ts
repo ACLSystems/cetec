@@ -259,7 +259,7 @@ export class ServiceisorgService {
   /*
   api para obtener el arbol de organizaciones para los reportes
   */
-  public getOrgTree(project:string):Observable<any>{
+  public getOrgTree(project?:string):Observable<any>{
 		if(project) {
 			return this.http.get(this.url+'api/v1/supervisor/report/orgtree?project='+project);
 		} else {

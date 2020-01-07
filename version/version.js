@@ -1,4 +1,4 @@
-const version = '1.2.4';
+const version = '1.2.6';
 
 module.exports = {
 	app: 'libreta',

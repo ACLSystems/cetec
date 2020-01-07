@@ -14,6 +14,8 @@
 /node_modules
 /bower_components
 /local_scripts
+Dockerfile
+/dist
 
 # IDEs and editors
 /.idea
