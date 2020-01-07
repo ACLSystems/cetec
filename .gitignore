@@ -16,6 +16,7 @@
 /local_scripts
 Dockerfile
 /dist
+nginx.conf
 
 # IDEs and editors
 /.idea
