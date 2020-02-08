@@ -34,7 +34,7 @@
           <h6><small>Fecha de cierre: {{endDateSpa}}</small></h6>
         </div>
         <div class="card-footer">
-          <button type="button" name="button" class="btn btn-{{color}}" [routerLink]="['/mygroups']">
+          <button type="button" name="button" class="btn btn-{{color}}" [routerLink]="['/user/mygroups']">
             <i class="fas fa-reply"></i> Regresar
           </button>
         </div>
@@ -170,7 +170,10 @@
 									<div *ngIf="data.pass && data.status!='pending' && data.certificateTutor && approvalCertificate">
                     <a href='https://goo.gl/forms/ysPqeLpN4yIJPmeZ2' target="_blank" type="button" class="btn btn-{{color}} blockquote" style="margin-top:15px;" (click)="shownewDoubt(infoconst)"><i class="fas fa-certificate"></i> Imprimir constancia</a>
                   </div>
-									<span *ngIf="data.status=='pending'" class="text-{{color}} font-italic"><i class="fas fa-exclamation-circle"></i> Pago pendiente</span>
+									<span *ngIf="data.status=='pending'" class="text-{{color}} font-italic"><i class="fas fa-exclamation-circle"></i> Pago pendiente</span><br />
+									<button *ngIf="data.status=='pending'" class="btn btn-outline-{{color}} btn-sm" (click)="paymentInst(payment);">
+										Instrucciones de pago
+									</button>
 									<span *ngIf="!data.certificateTutor" class="text-{{color}} font-italic"><br><i class="fas fa-exclamation-circle"></i> El tutor de este curso no ha liberado tu constancia</span>
 									<span *ngIf="!approvalCertificate" class="text-{{color}} font-italic"><br><i class="fas fa-exclamation-circle"></i> La constancia se libera el:  {{startCertificateDate}}</span>
                 </div>
@@ -181,7 +184,10 @@
                     </button>
                   </div>
 
-                  <span *ngIf="data.status=='pending'" class="text-{{color}} font-italic"><i class="fas fa-exclamation-circle"></i> Pago pendiente</span>
+                  <span *ngIf="data.status=='pending'" class="text-{{color}} font-italic"><i class="fas fa-exclamation-circle"></i> Pago pendiente</span><br />
+									<button *ngIf="data.status=='pending'" class="btn btn-outline-{{color}} btn-sm"  (click)="paymentInst(payment);">
+										Instrucciones de pago
+									</button>
 
                   <div *ngIf="data.pass && data.certificateNumber != null && data.status!='pending'">
                     <a
@@ -521,6 +527,39 @@
       </i>
     </p>
   </div>
+  <!--Termina cuerpo del modal-->
+</ng-template>
+<!--  -->
+
+<!-- Modal para confirmar datos de la constancia -->
+<ng-template #payment let-c="close" let-d="dismiss" class="animated fast fadeIn modal-side modal-">
+
+  <!--Encabezado del modal-->
+  <div class="modal-header">
+    <h4 class="modal-title"><i class="fas fa-info-circle"></i> Instrucciones de pago</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!--  -->
+
+  <!--Cuerpo del modal para agregar una respuesta-->
+  <div class="modal-body">
+		<p>Para obtener tu constancia realiza un pago por la cantidad de </p>
+			<div class="alert alert-primary">
+				<h2 style="text-align:center">$360.00 MXN</h2>
+			</div>
+			<p>En Efectivo: en cualquier sucursal de BBVA a la cuenta: <b>0153584585</b><br><br>Transferencia electrónica: BBVA con CLABE interbancaria: <b>012540001535845850</b><br><br><span class="text-danger" style="text-justify: auto">IMPORTANTE: Utiliza el siguiente número de folio como <b>CONCEPTO DE PAGO</b> en tu depósito o transferencia. De no seguir estas instrucciones no será posible rastrear tu pago.</span></p>
+			<div class="alert alert-primary">
+				<h3 style="text-align:center">{{data.folio}}</h3>
+			</div>
+			<p style="text-justify: auto">Tu pago se verá reflejado en un máximo de 3 días laborales. Cuando el pago esté validado se te enviará un correo para notificarte. El estado se verá reflejado como <span class="text-success">Activo</span> y podrás generar tu constancia.
+			</p>
+  </div>
+	<div class="modal-footer">
+		<button class="btn btn-link" (click)="print();">Imprimir</button>
+		<button class="btn btn-link" data-dismiss="modal">Cerrar</button>
+	</div>
   <!--Termina cuerpo del modal-->
 </ng-template>
 <!--  -->

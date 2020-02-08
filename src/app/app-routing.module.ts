@@ -19,6 +19,7 @@ const routes: Routes = [
 	{path: 'searchconsole', loadChildren: './searchmanager/search.module#SearchModule'},
 	{path: 'reports', loadChildren: './Reports/reports.module#ReportsModule'},
 	{path: 'requests', loadChildren: './manager/manager.module#ManagerModule'},
+	{path: 'folios', loadChildren: './folios/folios.module#FoliosModule'},
 	{path: 'editor', loadChildren: './editor/editor.module#EditorModule'},
 	{path: 'tutor', loadChildren: './Tutor/tutor.module#TutorModule'},
 	{path: 'admin', loadChildren: './adminconsole/adminconsole.module#AdminconsoleModule'},

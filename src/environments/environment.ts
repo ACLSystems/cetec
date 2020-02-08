@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://apiadmincetec.sloppy.zone/',
+  url: 'https://apicetec.superatemexico.com/',
   urlLibreta: 'http://localhost:4200/',
   idTutor: '5d448736c65eff0019726949',
 	versionCheckURL: 'version.json',

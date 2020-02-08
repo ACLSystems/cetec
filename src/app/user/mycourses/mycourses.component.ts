@@ -374,6 +374,10 @@ export class MycoursesComponent implements OnInit, DoCheck {
     this.closemodal = this.modalService.open(content);
   }
 
+	paymentInst(content:any) {
+		this.closemodal = this.modalService.open(content);
+	}
+
   /*
   Funcion que muestra el modal para agregar un comentario
   */

@@ -194,9 +194,25 @@ export class NewgroupComponent implements OnInit{
 	*/
 	public getOU(){
 		this.userService.getRoles().subscribe(data=>{
+			console.group('Data');
+			console.log(data);
+			console.groupEnd();
 			this.parent = data.message.ou.parent;
 			this.state = data.message.ou.state;
 			this.longname = data.message.ou.longName;
+			console.group('Parent');
+			console.log(this.parent);
+			console.groupEnd();
+			console.group('State');
+			console.log(this.state);
+			console.groupEnd();
+			console.group('longname');
+			console.log(this.longname);
+			console.groupEnd();
+			console.group('instanceName');
+			console.log(environment.instanceName);
+			console.groupEnd();
+
 			if(this.parent==environment.instanceName && this.state==environment.instanceName){
 				this.getStatesOU();
 				this.orgusstate = true;

@@ -1,0 +1,180 @@
+<div *ngIf="loading">
+  <div class="row text-center animated fadeIn">
+    <div class="col ">
+      <i class="fas fa-sync fa-spin fa-5x"></i>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      <h1>Cargando componentes ... </h1>
+    </div>
+  </div>
+</div>
+<div *ngIf="!loading" class="container">
+	<div class="alert alert-primary" *ngIf="!finishProcessing">
+		<h3>Ingreso de Folios</h3>
+	</div>
+	<div class="row" *ngIf="!showingConfirm && !processing && !finishProcessing">
+		<div class="col">
+			<textarea
+				name="folios"
+				rows="8"
+				cols="80"
+				[formControl]="folios"
+				placeholder="Colocar folios separados por coma, por espacios o por reglones"
+			>
+			</textarea>
+			<br />
+			<div class="btn-group btn-group-sm">
+				<button
+					type="button"
+					class="btn btn-primary btn-sm"
+					(click)="validate();"
+					id="validate"
+					>
+					Validar
+				</button>
+				<button
+					type="button"
+					class="btn btn-danger btn-sm"
+					(click)="preProcessFolios();"
+					[disabled]="!foliosReviewed || foliosNotEntered"
+					>
+					Procesar
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="showingConfirm && !processing && !finishProcessing">
+		<div class="col">
+			<div class="alert alert-warning">
+				<h3>Los folios con error no serán procesados. ¿Estás seguro que deseas continuar?</h3>
+			</div>
+			<div class="btn-group btn-group-sm">
+				<button
+					type="button"
+					class="btn btn-primary btn-sm"
+					(click)="processFolios();"
+					>
+					Procesar
+				</button>
+				<button
+					type="button"
+					class="btn btn-danger btn-sm"
+					(click)="cancelProcess();"
+					>
+					Cancelar
+				</button>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!showingConfirm && processing && !finishProcessing">
+		<div class="row text-center animated fadeIn">
+	    <div class="col ">
+	      <i class="fas fa-sync fa-spin fa-5x"></i>
+	    </div>
+	  </div>
+	  <div class="row text-center">
+	    <div class="col">
+	      <h3>Procesando folios ... </h3>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="row" *ngIf="!showingConfirm && !processing && finishProcessing">
+		<div class="col">
+			<h3>Resultado de carga de folios</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Estado</th>
+						<th>Folio</th>
+						<th>Mensaje</th>
+						<th>Usuario</th>
+						<th>Grupo y curso</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let res of results; let index=index;">
+						<td>{{index + 1}}</td>
+						<td>{{res.status}}</td>
+						<td>{{res.folio | creditCard}}</td>
+						<td>{{res.message}}</td>
+						<td>{{res.student.name}} {{res.student.fatherName}} {{res.student.motherName}} ({{res.student.email}})</td>
+						<td>{{res.group.course.title}} ({{res.group.code}})</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn-group btn-group-sm">
+				<button
+					type="button"
+					class="btn btn-primary btn-sm"
+					(click)="reset();"
+					>
+					Cargar nuevos folios
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			&nbsp;
+		</div>
+	</div>
+	<div *ngIf="foliosReviewed">
+		<div class="row alert alert-light">
+			<div class="col-auto">
+				Folios correctos: {{foliosOK.length}}
+			</div>
+			<div class="col-auto text-danger">
+				Folios incorrectos: {{foliosNotOK.length}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<!-- <div class="row" *ngIf="foliosOK.length > 0">
+					<div class="col">
+						<h4>Folios correctos</h4>
+						<table class="table">
+							<tbody>
+								<tr *ngFor="let fol of foliosOK">
+									<td>{{fol.num + 1}}</td>
+									<td>{{fol.folio}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div> -->
+				<div class="row" *ngIf="foliosNotOK.length > 0">
+					<div class="col">
+						<h4 class="text-danger">Folios incorrectos</h4>
+						<table class="table">
+							<tbody>
+								<tr *ngFor="let fol of foliosNotOK">
+									<td>{{fol.num + 1}}</td>
+									<td>{{fol.folio | creditCard}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="foliosNotEntered">
+		<div class="col">
+			<div class="alert alert-warning">
+				Debes ingresar los folios para proceder
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="error">
+		<div class="col">
+			<div class="alert alert-danger">
+				{{errorMessage}}
+			</div>
+		</div>
+	</div>
+</div>
