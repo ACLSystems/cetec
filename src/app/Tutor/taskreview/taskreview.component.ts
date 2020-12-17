@@ -150,8 +150,8 @@ export class TaskreviewComponent implements OnInit {
         this.discussions = rest[1].message;
         this.comments = rest[2].message;
         this.replys = rest[3].message;
-        this.dataActivities = rest[4].message.dates;
-        for (const id of rest[4].message.dates) {
+        this.dataActivities = rest[4].dates;
+        for (const id of rest[4].dates) {
           this.beginDate = new Date(id.beginDate);
           this.endDate = new Date(id.endDate);
           this.dataTask.push({
@@ -162,6 +162,15 @@ export class TaskreviewComponent implements OnInit {
             type: id.type
           });
         }
+				// console.group('Discussions');
+				// console.log(this.discussions);
+				// console.groupEnd();
+				// console.group('Comments');
+				// console.log(this.comments);
+				// console.groupEnd();
+				// console.group('Replys');
+				// console.log(this.replys);
+				// console.groupEnd();
         this.loading = false;
       });
     });
@@ -338,7 +347,7 @@ export class TaskreviewComponent implements OnInit {
   Metodo para agregar las dudas y comentarios
   */
   setDoubt(title: any, descr: any) {
-    this.doubt = new Doubt(this.courseid, this.groupid, 'root', title, descr, 'discussion');
+    this.doubt = new Doubt(this.courseid, this.groupid, 'root', title, descr, 'question');
     this.tutorservice.setDiscusion(this.doubt).subscribe(data => {
       this.tutorservice.getDiscussionCourse(this.courseid, this.groupid).subscribe(res => {
         this.discussions = res.message;

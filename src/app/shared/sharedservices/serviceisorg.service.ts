@@ -191,6 +191,16 @@ export class ServiceisorgService {
     return this.http.get(this.url+'api/v1/author/course/getblocklist?id=' + courseid + '&section1=0&section2=500', {headers:headers});
   }
 
+	/*
+  metodo para obtener el temario por cada curso y mostrarlo al autor
+  */
+  public getCourse(courseid):Observable<any>{
+		const headers = new HttpHeaders({
+			'Authorization':'Bearer ' + this.token
+    });
+    return this.http.get(this.url+'api/v1/author/course/get?id=' + courseid, {headers:headers});
+  }
+
   /*
   metodo para obtener el listado de cursos y mostrarlos al autor
   */

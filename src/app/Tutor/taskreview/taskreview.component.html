@@ -14,8 +14,11 @@
 <div *ngIf="!loading" class="container">
   <div class="row">
     <div class="col-md-2">
-      <button type="button" class="btn btn-success blockquote" [routerLink]="['/tutor/tutorial']">
+      <button class="btn btn-sm btn-success btn-block" [routerLink]="['/tutor/tutorial']">
         <i class="fas fa-reply"></i> Regresar
+      </button>
+			<button class="btn btn-sm btn-warning btn-block" (click)="getTasks();">
+        <i class="fas fa-sync"></i> Refrescar
       </button>
     </div>
     <div class="col-md-4">
@@ -37,12 +40,12 @@
     </div>
   </div>
   <hr>
-  <div *ngIf="messagesuccessConst != ''" class="alert alert-success" role="alert">
+  <!-- <div *ngIf="messagesuccessConst != ''" class="alert alert-success" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
       <i class="fas fa-success-circle"></i> {{messagesuccessConst}}
-  </div>
+  </div> -->
   <ngb-tabset>
     <ngb-tab>
       <ng-template ngbTabTitle><div class="text-success"><i class="far fa-list-alt"></i> Lista de alumnos</div></ng-template>

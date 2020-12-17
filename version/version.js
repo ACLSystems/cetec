@@ -1,9 +1,9 @@
-const version = '1.3.0';
+const version = '1.1.5';
 
 module.exports = {
-	app: 'libreta',
+	app: 'cja',
 	version: version,
-	year: '2019',
+	year: '2020',
 	vendor: 'ACL Systems SA de CV',
 	numVersion: version.replace(/\./g, '')
 	// se utiliza semver

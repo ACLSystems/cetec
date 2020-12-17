@@ -9,7 +9,7 @@ import { DatePipe, DecimalPipe} from '@angular/common';
 //import * as jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
 import { GeneratedocsService } from './../../user/mycourses/generatedocs.service';
-import { constancias } from './../../user/models/docscetec';
+import { constancias } from './../../user/models/docsconalep';
 
 //type AOA = any[][];
 
@@ -44,7 +44,14 @@ export class GradesbygroupComponent implements OnInit {
   public endDate:any;
   public wopts:XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
 
-  constructor(private _router:Router, private _activeRouter:ActivatedRoute, private _srvirg:ServiceisorgService, public decimal:DecimalPipe, public datePipe:DatePipe,  private genedocs:GeneratedocsService) {
+  constructor(
+		private _router:Router,
+		private _activeRouter:ActivatedRoute,
+		private _srvirg:ServiceisorgService,
+		public decimal:DecimalPipe,
+		public datePipe:DatePipe,
+		private genedocs:GeneratedocsService
+	) {
     this._activeRouter.params.subscribe( params =>{
       if(params['idgroup']!=null){
         this.idgroup = params['idgroup'];
@@ -64,6 +71,7 @@ export class GradesbygroupComponent implements OnInit {
 		localStorage.setItem('massCertChunk', String(0));
     this._srvirg.getGradesforgroup(this.idgroup).subscribe(data=>{
 			this.data = data;
+			// console.log(data);
 			this.roosterstudents = data.roster;
 			this.course = data.course;
 			this.duration = data.courseDuration;
@@ -208,10 +216,10 @@ export class GradesbygroupComponent implements OnInit {
 	    for(var i=init; i < finish; i++){
 				let id = this.roosterstudents[i];
 	      if(id.pass && id.passDate){
-	        if(id.finalGrade >= 60){
-	          this.genedocs.printdocumentcredit(constancias.constancia_acreditacion, id.certificateNumber, `${id.name} ${id.fatherName} ${id.motherName}`, this.course, id.finalGrade, this.duration, this.durationunit, id.passDateSpa, id.RFC || null);
-	        } else {
-	          this.genedocs.printdocassistance(constancias.constancia_participacion, id.certificateNumber, `${id.name} ${id.fatherName} ${id.motherName}`,this.course, this.duration, this.durationunit, id.passDateSpa, id.RFC || null);
+	        if(+id.finalGrade >= 60){
+	          this.genedocs.printdocumentcredit(constancias.constancia_acreditacion, id.certificateNumber, `${id.name} ${id.fatherName} ${id.motherName}`, this.course, id.finalGrade, this.duration, this.durationunit, id.passDateSpa);
+	        // } else {
+	        //   this.genedocs.printdocassistance(constancias.constancia_participacion, id.certificateNumber, `${id.name} ${id.fatherName} ${id.motherName}`,this.course, this.duration, this.durationunit, id.passDateSpa, id.RFC || null);
 	        }
 	      }
 	    }
@@ -223,14 +231,14 @@ export class GradesbygroupComponent implements OnInit {
   /*
   Metodo para imprimir la constancia
   */
-  public getCertificated(name:string, fatherName:string, motherName:string, date:any, finalGrade:number, certificateNumber:number, passDate:any){
+  public getCertificated(name:string, fatherName:string, motherName:string, date:any, finalGrade:string, certificateNumber:string, passDate:any){
       this.loading = true;
       let nombreCompleto = name+" "+fatherName+" "+motherName;
-      if(finalGrade >= 60){
+      if(+finalGrade >= 60){
 				console.log(passDate);
-        this.genedocs.printdocumentcredit(constancias.constancia_acreditacion, certificateNumber, nombreCompleto, this.course, finalGrade, this.duration, this.durationunit, passDate, null);
-      }else{
-        this.genedocs.printdocassistance(constancias.constancia_participacion, certificateNumber, nombreCompleto,this.course, this.duration, this.durationunit, passDate, null);
+        this.genedocs.printdocumentcredit(constancias.constancia_acreditacion, certificateNumber, nombreCompleto, this.course, finalGrade, this.duration, this.durationunit, passDate);
+      // }else{
+      //   this.genedocs.printdocassistance(constancias.constancia_participacion, certificateNumber, nombreCompleto,this.course, this.duration, this.durationunit, passDate, null);
       }
       this.loading = false;
   }

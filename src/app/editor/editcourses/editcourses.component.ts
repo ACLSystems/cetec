@@ -31,8 +31,9 @@ export class EditcoursesComponent implements OnInit {
   public getCourses(){
     this.loading = true;
     this.serviceorg.getCoursesAuth().subscribe(data=>{
-      this.cursoslist = data.message.courses;
+      this.cursoslist = [...data];
       this.loading = false;
+			// console.log(this.cursoslist);
     },error=>{
       console.log(error);
     });
@@ -42,6 +43,7 @@ export class EditcoursesComponent implements OnInit {
   metodo para mostrar el temario del curso que seleccione el autor
   */
   public getCourse(courseid){
+		console.log(courseid)
     this._router.navigate(['/editor/courselessons',courseid]);
   }
 

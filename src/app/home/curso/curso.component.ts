@@ -48,16 +48,20 @@ export class CursoComponent implements OnInit {
     this.getCourse(this.idc);
   }
 
-  public getCourse(id){
+  public getCourse(id:string){
     this.loading = true;
     this.homeService.getCoursesOrg().subscribe(data => {
-      this.cursos = data.body.message.courses;
-      this.curso = this.cursos.find(c => c.id == id);
+			// console.log('homeService.getCourseOrg')
+			// console.log(data);
+      this.cursos = [...data];
+      this.curso = this.cursos.find(c => c._id == id);
       this.loading = false;
     });
 
     this.homeService.showBlocks(id).subscribe(data => {
-      this.block = data.body.message.blocks;;
+			// console.log('homeService.showBlocks')
+			// console.log(data);
+      this.block = [...data];;
       this.loading = false;
     });
   }

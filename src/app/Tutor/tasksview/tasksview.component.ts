@@ -104,7 +104,7 @@ export class TasksviewComponent implements OnInit {
 		this.messageTasks = Array.from(emptyArray);
     this.serviceisorg.getTask(this.groupid, this.studentid, this.blockid).subscribe(data => {
       this.tasksStudents = data.message;
-			//console.log(this.tasksStudents)
+			console.log(this.tasksStudents)
       for (const id of this.tasksStudents.tasks) {
         if (id.type === 'file') {
 					if(id.content){
@@ -121,6 +121,13 @@ export class TasksviewComponent implements OnInit {
 					}
 					}
         }
+				if(id.type === 'ddlmmr') {
+					var [contl,contr] = id.content.split('-');
+					contl = JSON.parse(contl);
+					contr = JSON.parse(contr);
+					id.contl = contl;
+					id.contr = contr;
+				}
       }
       this.loading = false;
     });
@@ -159,9 +166,12 @@ export class TasksviewComponent implements OnInit {
   */
   sendGrades(comment?: string) {
     this.objects = [];
+		console.group('Tareas');
+		console.log(this.tasks);
+		console.groupEnd();
     this.serviceisorg.setgradeTaskconcatMap(this.tasks).subscribe(data => {
       const message = 'Se guardó la calificación correctamente';
-			//console.log(data)
+			// console.log(data)
       this.messageTasks.push({Mensaje: message, id: data.taskid});
     }, error => {
 			const er = error;
@@ -169,7 +179,7 @@ export class TasksviewComponent implements OnInit {
     });
 
     if(comment) {
-      this.comment = new Doubt(this.courseid, this.groupid, 'root', 'Mensaje del tutor', comment, 'tutor', this.blockid, this.studentid);
+      this.comment = new Doubt(this.courseid, this.groupid, 'root', 'Tutor calificó tu actividad - ' + this.tasksStudents.studentFullName, comment + ' - Puedes ver tu calificación en "Mi progreso"', 'tutor', this.blockid, this.studentid);
       this.courseservice.setDiscusion(this.comment).subscribe(() => {
         this.objectCourse = new Objects('courses', this.courseid);
         this.objects.push(this.objectCourse);

@@ -12,9 +12,11 @@ import { environment } from './../../../environments/environment';
 export class CourselessonsComponent implements OnInit {
 
 loading:boolean;
+loading2:boolean;
 courseid;
 identity;
 listblock:any []=[];
+course;
 color:string;
 
 constructor(private router:Router, private activatedRoute:ActivatedRoute, private user:UserService, private serviceorg:ServiceisorgService) {
@@ -27,15 +29,26 @@ ngOnInit() {
   this.identity = this.user.getidentity();
 	this.color = environment.color;
   this.getListBlock();
+	this.getCourse();
+}
+
+getCourse() {
+	this.loading = true
+  this.serviceorg.getCourse(this.courseid).subscribe(data=>{
+    this.loading = false
+    this.course= data.message;
+  },error=>{
+    console.log(error);
+  });
 }
 
 /*
 Meotodo para obtener el listado de los cursos
 */
 public getListBlock(){
-  this.loading = true
+  this.loading2 = true
   this.serviceorg.getlistBlock(this.courseid).subscribe(data=>{
-    this.loading = false
+    this.loading2 = false
     this.listblock = data.message.blocks;
   },error=>{
     console.log(error);

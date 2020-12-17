@@ -11,8 +11,9 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!loading">
+  <div *ngIf="!loading && !loading2">
     <h1 class="display-3 text-center">Temario</h1>
+		<h3 class="text-center">{{course.title}}</h3>
     <hr>
     <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
       <div *ngFor="let itemBlock of listblock;let indiceBlock = index">

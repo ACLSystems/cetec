@@ -42,6 +42,7 @@
     "ngx-editor": "^4.1.0",
     "ngx-embed-video": "^1.0.4",
     "ngx-pagination": "^3.2.1",
+    "qrious": "^4.0.2",
     "recaptcha": "^1.2.1",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.4.0",

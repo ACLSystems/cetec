@@ -95,7 +95,74 @@
 				</div>
       </div>
       <!--cierra tareas tipo texto-->
-
+			<!--tareas tipo ddlmmr-->
+      <div *ngSwitchCase="'ddlmmr'">
+				<div class="row">
+					<div class="col-sm-3">
+	          <div class="row">
+	            <div class="col-sm"><small>
+								<i class="far fa-calendar-alt"></i> Fecha
+								<span class="text-success">
+									{{itemTask.date | date:'yyyy-MM-dd'}}
+								</span>
+							</small></div>
+	          </div>
+		          <div class="row">
+								<div class="col-sm">
+									<small>
+					          <i class="far fa-folder"></i> Cal. actual
+										<span class="text-success">
+											{{itemTask.grade}}
+										</span>
+									</small>
+								</div>
+		          </div>
+	          <div class="row">
+	            <div class="col-sm">
+								<form><div class="input-group input-group-sm mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-sm">0-100</span>
+									</div>
+									<input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" #grade (blur)="setGrade(itemTask.taskId, grade.value, itemTask.label, idTask)" required>
+									<span *ngIf="!isGradeOk" class="text-danger"> El valor no puede ser mayor a 100</span>
+								</div></form>
+								<!-- <form class="input-group input-group-sm mb-3">
+		              <div class="form-group">
+		                <small><label>Calificación (0-100) :</label>
+			                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" #grade (blur)="setGrade(itemTask.taskId, grade.value, itemTask.label, idTask)" required>
+			                <span *ngIf="!isGradeOk" class="text-danger"> El valor no puede ser mayor a 100</span>
+										</small>
+								  </div>
+		            </form> -->
+							</div>
+	          </div>
+					</div>
+					<div class="col-sm">
+						<!-- <div *ngIf="messageSuccess" class="alert alert-success" role="alert">
+		          {{messageSuccess}}
+		        </div> -->
+		        <h5><i class="fas fa-thumbtack"></i> Tarea: <span class="text-success">{{itemTask.label}}</span></h5>
+						<div>Texto de la tarea: </div>
+						<div [innerHTML]="itemTask.taskText" class="alert alert-info"  role="alert"></div>
+						<div>Respuesta del alumno: </div>
+						<div class="alert alert-secondary" role="alert">
+		          <div class="row">
+		          	<div class="col">
+		          		<ul class="list-group">
+		          			<li class="list-group-item" *ngFor="let content of itemTask.contl">{{content}}</li>
+		          		</ul>
+		          	</div>
+								<div class="col">
+									<ul class="list-group">
+		          			<li class="list-group-item" *ngFor="let content of itemTask.contr">{{content}}</li>
+		          		</ul>
+								</div>
+		          </div>
+		        </div>
+					</div>
+				</div>
+      </div>
+      <!--cierra tareas tipo ddlmr-->
       <!--tareas tipo archivo-->
 			<div *ngSwitchCase="'file'">
 				<div class="row">

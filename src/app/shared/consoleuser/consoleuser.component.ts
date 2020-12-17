@@ -84,7 +84,8 @@ export class ConsoleuserComponent implements OnInit {
     this.course.getCourses(this.token).subscribe(data => {
       const mygroups = data.message.groups;
       this.course.getCoursesOrg().subscribe(res => {
-        this.datacourses = res.message.courses;
+				// console.log(res);
+        this.datacourses = [...res];
         if (mygroups != null) {
             for (const idmg of mygroups) {
               for (const idcr of this.datacourses) {
@@ -97,6 +98,7 @@ export class ConsoleuserComponent implements OnInit {
               }
             }
           }
+				// console.log(this.datacourses);
       });
     });
   }
@@ -183,6 +185,7 @@ export class ConsoleuserComponent implements OnInit {
   }
 
   public verCurso(curso: any) {
+		// console.log(curso);
     this.router.navigate(['/curso', curso]);
   }
 

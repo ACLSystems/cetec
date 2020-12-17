@@ -418,20 +418,19 @@ export class MycoursesComponent implements OnInit, DoCheck {
         this.data.finalGrade,
         this.data.courseDuration,
         this.data.courseDurUnits,
-        this.data.passDateSpa,
-				null
+        this.data.passDateSpa
       );
-    } else {
-      this.generateDocs.printdocassistance(
-        constancias.constancia_participacion,
-        this.data.certificateNumber,
-        this.data.name,
-        this.data.course,
-        this.data.courseDuration,
-        this.data.courseDurUnits,
-        this.data.passDateSpa,
-				null
-      );
+    // } else {
+    //   this.generateDocs.printdocassistance(
+    //     constancias.constancia_participacion,
+    //     this.data.certificateNumber,
+    //     this.data.name,
+    //     this.data.course,
+    //     this.data.courseDuration,
+    //     this.data.courseDurUnits,
+    //     this.data.passDateSpa,
+		// 		null
+    //   );
     }
   }
 

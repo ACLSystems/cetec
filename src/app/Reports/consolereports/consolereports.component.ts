@@ -72,12 +72,12 @@ export class ConsolereportsComponent implements OnInit {
 		this.processingEvals = true;
 		this.updateSubscription.unsubscribe();
 		this.updateSubscription = interval(this.seconds).subscribe(() => {
-			console.log('Refrescando cada 10 minutos');
+			// console.log('Refrescando cada 10 minutos');
 			this.updateTime = new Date();
 			this.getProject();
 		});
 		this.updateDisableSubscription = interval(this.secondsDisable).subscribe(() => {
-			console.log('Activando refresco')
+			// console.log('Activando refresco')
 			this.updateDisable = false;
 			this.updateDisableSubscription.unsubscribe();
 		})
@@ -122,8 +122,8 @@ export class ConsolereportsComponent implements OnInit {
 				if(!this.projectid) {
 					this.projectid = data[0]._id;
 				}
-				console.log(this.projects)
-				console.log(this.projectid)
+				// console.log(this.projects)
+				// console.log(this.projectid)
 			}
 			this.loading = false;
 			let project = this.projectid || null;
@@ -146,7 +146,9 @@ export class ConsolereportsComponent implements OnInit {
 		this.displayEvals = data.displayEvals || false;
 		//console.log(this.displayEvals);
 		//console.log('orgTree')
-		//console.log(this.orgTree);
+		// console.group('OrgTree');
+		// console.log(this.orgTree);
+		// console.groupEnd()
 		var query = '';
 		this.level = this.orgTree.ouLevel;
 		if(this.level === 3) {
@@ -173,7 +175,7 @@ export class ConsolereportsComponent implements OnInit {
 				query += '&project=' + this.projectid;
 			}
 		}else if(this.level  === 1) {
-			console.log('Somos nivel 1')
+			// console.log('Somos nivel 1')
 		}
 		//console.log(query);
 		this.getPercentil(query);
@@ -183,9 +185,9 @@ export class ConsolereportsComponent implements OnInit {
 		this.orgservice.getOrgTree(project).subscribe(data=>{
 			let results = [];
 			if(data.tree && Array.isArray(data.tree) && data.tree.length === 0) {
-				console.log('No encontramos grupos - Reintentando')
+				// console.log('No encontramos grupos - Reintentando')
 				this.orgservice.getOrgTree().subscribe(data => {
-					console.log(data);
+					// console.log(data);
 					this.setOrgTree(data);
 				});
 			} else {
@@ -208,12 +210,12 @@ export class ConsolereportsComponent implements OnInit {
 			this.progressUnTrack = (this.percentil.totalUsers - this.percentil.usersOnTrack) / this.percentil.totalUsers * 100;
 			this.progressPass = this.percentil.usersPassed / this.percentil.totalUsers * 100;
 			var results = this.percentil.results;
-			console.log(this.progressTrack)
-			console.log(this.progressUnTrack)
-			console.log(this.progressPass)
-			console.log('Percentil results')
-			console.log(results);
-			console.log(this.level)
+			// console.log(this.progressTrack)
+			// console.log(this.progressUnTrack)
+			// console.log(this.progressPass)
+			// console.log('Percentil results')
+			// console.log(results);
+			// console.log(this.level)
 			if(Array.isArray(results) && results.length > 0) {
 				if(this.level === 3) { // si estamos en nivel 3
 					//console.log('Somos percentil nivel 3')
@@ -270,7 +272,9 @@ export class ConsolereportsComponent implements OnInit {
 										usersOnTrack: ou.usersOnTrack || 0,
 										usersPassed: ou.usersPassed || 0
 									}
-									this.courses.push(course);
+									if(course.code) {
+										this.courses.push(course);
+									}
 								} else {
 									if(ou.totalUsers	) {this.courses[findCourse].totalUsers 		+= ou.totalUsers;		}
 									if(ou.usersOnTrack) {this.courses[findCourse].usersOnTrack 	+= ou.usersOnTrack;	}
@@ -283,7 +287,7 @@ export class ConsolereportsComponent implements OnInit {
 				this.courses.forEach((course:any) => {
 					course.percentage = course.totalUsers / this.percentil.totalUsers * 100;
 				})
-				//console.log(this.courses);
+				// console.log(this.courses);
 				this.processingData = false;
 				this.loading = false;
 				this.loadingData = false;

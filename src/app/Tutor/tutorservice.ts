@@ -42,7 +42,7 @@ export class TutorService {
   listar las dudas y comentarios de los cursos
   */
   getDiscussionCourse(courseid:any, groupid:any):Observable<any>{
-    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","pubtype":"discussion","type":"root"}&order=-1&skip=0&limit=500');
+    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","$or":[{"pubtype":"question"},{"pubtype":"tutor"}],"type":"root"}&order=-1&skip=0&limit=500');
   }
 
   /*
@@ -56,14 +56,14 @@ export class TutorService {
   obtener los comentarios en la pestaña de dudas y preguntas de los cursos
   */
   getCommentsCourses(courseid:any, groupid:any):Observable<any>{
-    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","pubtype":"discussion","type":"comment"}&order=1&skip=0&limit=500');
+    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","$or":[{"pubtype":"question"},{"pubtype":"tutor"}],"type":"comment"}&order=1&skip=0&limit=500');
   }
 
   /*
   obtener las respuestas en la pestaña de dudas y preguntas de los bloques
   */
   getReplysCourses(courseid:any,groupid:any):Observable<any>{
-    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","pubtype":"discussion","type":"reply"}&order=1&skip=0&limit=500');
+    return this.http.get(this.url+'api/v1/user/comment/get?query={"course":"'+courseid+'","group":"'+groupid+'","pubtype":"question","type":"reply"}&order=1&skip=0&limit=500');
   }
 
   /*
