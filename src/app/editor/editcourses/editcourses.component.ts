@@ -43,7 +43,7 @@ export class EditcoursesComponent implements OnInit {
   metodo para mostrar el temario del curso que seleccione el autor
   */
   public getCourse(courseid){
-		console.log(courseid)
+		// console.log(courseid)
     this._router.navigate(['/editor/courselessons',courseid]);
   }
 

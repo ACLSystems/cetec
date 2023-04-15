@@ -67,7 +67,7 @@ export class UserComponent implements OnInit {
 				this.loading = false;
 			} else {
 				window.alert('Hubo un error');
-				console.log(data);
+				// console.log(data);
 				this.loading = false;
 			}
 		}, error => {

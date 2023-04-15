@@ -90,7 +90,7 @@ export class CheckfacComponent implements OnInit {
   public getDetailsRequest(){
     this.managerservice.getRequestFinder(this.detailsFactura.numberrequest).subscribe(
       data=>{
-        console.log(data);
+        // console.log(data);
         //this.invoiceNumber = data.invoiceNumber;
       },error=>{
         console.log(error);

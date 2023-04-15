@@ -128,7 +128,7 @@ export class TaskreviewComponent implements OnInit {
     this.labelGradesList = [];
     this.tutorservice.getlistroster(this.groupCode).subscribe(data => {
       this.listRooster = data.message;
-      //console.log(this.listRooster);
+      console.log(this.listRooster);
       this.courseid = data.message.courseid;
       this.groupid = data.message.groupid;
       for (const item of data.message.students) {
@@ -241,8 +241,8 @@ export class TaskreviewComponent implements OnInit {
   /*
   metodo para traer el historial de calificaciones del alumno
   */
-  viewGrades(groupid: any, userid: any, content: any) {
-    this.tutorservice.getGradesStudent(groupid, userid).subscribe(data => {
+  viewGrades(rosterid: string, content: unknown) {
+    this.tutorservice.getGradesStudent(rosterid).subscribe(data => {
       this.dataGrades = data.message.blocks;
       this.showModal(content);
     });

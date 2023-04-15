@@ -42,7 +42,8 @@ export class HomeComponent implements OnInit {
   public getCourseList(){
     this.loading = true;
     this.homeservice.getCoursesOrg().subscribe(data =>{
-      this.cursos = data.body.message.courses;
+			// console.log(data);
+      this.cursos = [...data];
       this.loading = false;
     },error=>{
       console.log(error.message);

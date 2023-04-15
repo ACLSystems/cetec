@@ -128,6 +128,9 @@ export class TasksviewComponent implements OnInit {
 					id.contl = contl;
 					id.contr = contr;
 				}
+				if(id.type === 'ddlm') {
+					id.content = JSON.parse(id.content);
+				}
       }
       this.loading = false;
     });

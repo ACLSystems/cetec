@@ -26,8 +26,9 @@ export class TutorService {
   /*
   metodo para traer el historial de calificaciones del alumno
   */
-  getGradesStudent(groupid, studentid):Observable<any>{
-    return this.http.get(this.url+'api/v1/instructor/group/studentgrades?groupid='+groupid+'&studentid='+studentid);
+  getGradesStudent(rosterid: string):Observable<any>{
+    // return this.http.get(this.url+'api/v1/instructor/group/studentgrades?groupid='+groupid+'&studentid='+studentid);
+		return this.http.get(`${this.url}api/v1/instructor/group/studentgrades?rosterid=${rosterid}`)
   }
 
   /*

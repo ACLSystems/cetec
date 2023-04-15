@@ -39,7 +39,7 @@ export class HttpConfigInterceptor implements HttpInterceptor{
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-           
+
         }
         return event;
       }),
@@ -54,9 +54,9 @@ export class HttpConfigInterceptor implements HttpInterceptor{
 			    //localStorage.removeItem('token');
 			    //localStorage.clear();
 					console.log(error);
-					if(error.error && error.error.message) {
-						window.alert(error.error.message);
-					}
+					// if(error.error && error.error.message) {
+					// 	window.alert(error.error.message);
+					// }
 					this.router.navigate(['/login']);
 				} else if(error.status === 0) { // Está offline
 					this.router.navigate(['/offline']);

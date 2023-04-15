@@ -181,7 +181,7 @@ export class AddusersComponent implements OnInit {
 		if (this.file.size > 0) {
 			const fileReader = new FileReader();
 			fileReader.onload = (e) => {
-				console.log(fileReader.result)
+				// console.log(fileReader.result)
 				this.arrayBuffer = fileReader.result;
 				const data = new Uint8Array(this.arrayBuffer);
 				const arr = new Array();
@@ -202,7 +202,7 @@ export class AddusersComponent implements OnInit {
 	}
 
 	public validateFiles(students: any[]) {
-		console.log(students)
+		// console.log(students)
 		this.csvResult = [];
 		this.studentscsvfile = [];
 		this.resultfalse = 0;
@@ -473,7 +473,7 @@ export class AddusersComponent implements OnInit {
 						temp1: tmparray,
 						temp2: tmparray2
 					};
-					console.log(requestUpdate);
+					// console.log(requestUpdate);
 					// this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
 					// 	this.messageSuccess = 'Se agregó el usuario exitosamente';
 					// 	this.userindividual++;
@@ -501,7 +501,7 @@ export class AddusersComponent implements OnInit {
 						temp1: tmparray,
 						temp2: tmparray2
 					};
-					console.log(requestUpdate);
+					// console.log(requestUpdate);
 					// this.managerServices.updateRequestManager(requestUpdate).subscribe( () => {
 					// 	this.messageSuccess = 'Se agregó el usuario exitosamente';
 					// 	this.userindividual++;
@@ -664,7 +664,7 @@ export class AddusersComponent implements OnInit {
 		this.personcheck = false;
 		this.managerServices.getUserDetailsByManager(useremail).subscribe(data => {
 			if(data.message == 'Error: User -' + useremail + '- does not exist') {
-				console.log(data.message);
+				// console.log(data.message);
 			} else {
 				this.personsingle =  data.person;
 				this.studentsingle = data.student;
@@ -695,7 +695,7 @@ export class AddusersComponent implements OnInit {
 
 	setProject(project: string) {
 		this.selectedProject = project;
-		console.log(`Proyecto ${project} seleccionado`)
+		// console.log(`Proyecto ${project} seleccionado`)
 	}
 
 	newusersingle() {

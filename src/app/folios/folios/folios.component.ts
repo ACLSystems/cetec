@@ -71,9 +71,9 @@ export class FoliosComponent implements OnInit {
 			this.foliosNotEntered = true;
 		}
 		this.foliosReviewed = true;
-		console.group('foliosArray');
-		console.log(this.foliosArray);
-		console.groupEnd();
+		// console.group('foliosArray');
+		// console.log(this.foliosArray);
+		// console.groupEnd();
 	}
 	preProcessFolios() {
 		if(this.foliosNotOK.length > 0) {
@@ -93,18 +93,18 @@ export class FoliosComponent implements OnInit {
 		console.group('Aquí andamos');
 		console.groupEnd();
 		this.foliosService.regFolios(this.foliosArray).subscribe(data => {
-			console.group('data');
-			console.log(data);
-			console.groupEnd();
+			// console.group('data');
+			// console.log(data);
+			// console.groupEnd();
 			if(data.results && Array.isArray(data.results) && data.results.length > 0) {
 				this.results = [...data.results];
 			}
 			this.processing = false;
 			this.finishProcessing = true;
 		}, error => {
-			console.group('folios');
-			console.log(this.foliosOK);
-			console.groupEnd();
+			// console.group('folios');
+			// console.log(this.foliosOK);
+			// console.groupEnd();
 			this.error = true;
 			this.errorMessage = `${error.message} ${error.error.message}`;
 		})
